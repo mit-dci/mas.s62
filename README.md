@@ -11,7 +11,7 @@ Time:  MW 10-11:30 AM
 
 Place:  E14-341
 
-Contact: [6.892-sp17-staff@mit.edu](6.892-sp17-staff@mit.edu)
+Contact: [cryptocurrency-sp18-staff@mit.edu](cryptocurrency-sp18-staff@mit.edu)
 
 You are welcome to contact us via email.  However, if you think your
 question would be useful for others to see, please file it as [an issue](https://github.com/mit-dci/MAS.S62-public/issues)
