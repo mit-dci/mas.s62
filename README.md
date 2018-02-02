@@ -36,13 +36,29 @@ NOTE:  The schedule is in flux and subject to change.
 | 1 | 2018-02-07 | Neha and Tadge | Introduction. Signatures, hashing, hash chains, e-cash, and motivation | [Untraceable Electronic Cash](http://www.wisdom.weizmann.ac.il/~/naor/PAPERS/untrace.pdf) |  |
 | 2 | 2018-02-12 | Tadge | Proof of Work and Mining | [Bitcoin](http://www.bitcoin.org/bitcoin.pdf) | |
 | 3 | 2018-02-14 | Tadge | Signatures | find easy to read primer on eddsa / schnorr sigs | |
-| 4 | 2018-02-20 | Tadge | Transactions and the UTXO model | | |
+| 4 | 2018-02-20 | Neha | Transactions and the UTXO model | | |
 | 5 | 2018-02-21 | Tadge | Synchronization process, pruning | | |
-| 6 | 2018-02-26 | TBD | (FC2018) | | |
-| 7 | 2018-02-28 | (James?) | Hard / Soft Forks | | |
-| 8 | 2018-03-05 | Tadge | SPV sync and privacy |  | |
-| 9 | 2018-03-07 | TBD | (Core dev) |  | |
+| 6 | 2018-02-26 | Tadge | TBD | | |
+| 7 | 2018-02-28 | TBD | Hard / Soft Forks | | |
+| 8 | 2018-03-05 | Neha | TBD |  | |
+| 9 | 2018-03-07 | TBD | TBD |  | |
 | 10 | 2018-03-12 | Tadge | Fee estimation, RBF | | |
+| 11 | 2018-03-14 | Tadge | TBD | | |
+| 12 | 2018-03-19 | TBD | TBD | | |
+| 13 | 2018-03-21 | TBD | TBD | | |
+| 14 | 2018-04-02 | TBD | TBD | | |
+| 15 | 2018-04-04 | TBD | TBD | | |
+| 16 | 2018-04-09 | TBD | TBD | | |
+| 17 | 2018-04-11 | TBD | TBD | | |
+| 18 | 2018-04-18 | TBD | TBD | | |
+| 19 | 2018-04-23 | TBD | TBD | | |
+| 20 | 2018-04-25 | TBD | TBD | | |
+| 21 | 2018-04-30 | TBD | TBD | | |
+| 22 | 2018-05-02 | TBD | TBD | | |
+| 23 | 2018-05-07 | TBD | TBD | | |
+| 24 | 2018-05-09 | TBD | TBD | | |
+| 25 | 2018-05-14 | | Final Presentations Day 1 | | |
+| 26 | 2018-05-16 | | Final Presentations Day 2 | | |
 
 ## Labs and Problem Sets
 
