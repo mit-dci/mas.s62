@@ -50,12 +50,6 @@ type PublicKey struct {
 // A message to be signed is just a block.
 type Message Block
 
-// A signature consists of 32 blocks.  It's a selective reveal of the private
-// key, according to the bits of the message.
-type Signature struct {
-	Preimage [32]Block
-}
-
 // --- Methods on the Block type
 
 // Hash returns the sha256 hash of the block.
@@ -68,6 +62,22 @@ func (self Block) Hash() Block {
 // and Y.IsPreimage(X) will return false.
 func (self Block) IsPreimage(arg Block) bool {
 	return self.Hash() == arg
+}
+
+// A signature consists of 32 blocks.  It's a selective reveal of the private
+// key, according to the bits of the message.
+type Signature struct {
+	Preimage [32]Block
+}
+
+// ToHex returns a hex string of a signature
+func (self Signature) ToHex() string {
+	var s string
+	for _, b := range self.Preimage {
+		s += fmt.Sprintf("%x", b[:])
+	}
+	s += fmt.Sprintf("\n")
+	return s
 }
 
 // --- Functions
@@ -94,4 +104,9 @@ func Sign(Message, SecretKey) Signature {
 // describing the validity of the signature.
 func Verify(Message, PublicKey, Signature) bool {
 	return false
+}
+
+// GetMessageFromString returns a Message which is the hash of the given string.
+func GetMessageFromString(s string) Message {
+	return sha256.Sum256([]byte(s))
 }
