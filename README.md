@@ -33,9 +33,22 @@ NOTE:  The schedule is in flux and subject to change.
 
 | # | Date | Lecturer | Topic | Readings | Lecture Notes |
 |---|------|----------|-------|----------|---------------|
-| 1 | 2/7 | Neha and Tadge | Introduction. Signatures, hashing, hash chains, e-cash, and motivation | [Untraceable Electronic Cash](http://www.wisdom.weizmann.ac.il/~/naor/PAPERS/untrace.pdf) |  |
+| 1 | 2018-02-07 | Neha and Tadge | Introduction. Signatures, hashing, hash chains, e-cash, and motivation | [Untraceable Electronic Cash](http://www.wisdom.weizmann.ac.il/~/naor/PAPERS/untrace.pdf) |  |
+| 2 | 2018-02-12 | Tadge | Proof of Work and Mining | [Bitcoin](http://www.bitcoin.org/bitcoin.pdf) | |
+| 3 | 2018-02-14 | Tadge | Signatures | find easy to read primer on eddsa / schnorr sigs | |
+| 4 | 2018-02-20 | Tadge | Transactions and the UTXO model | | |
+| 5 | 2018-02-21 | Tadge | Synchronization process, pruning | | |
+| 6 | 2018-02-26 | TBD | (FC2018) | | |
+| 7 | 2018-02-28 | (James?) | Hard / Soft Forks | | |
+| 8 | 2018-03-05 | Tadge | SPV sync and privacy |  | |
+| 9 | 2018-03-07 | TBD | (Core dev) |  | |
+| 10 | 2018-03-12 | Tadge | Fee estimation, RBF | | |
 
 ## Labs and Problem Sets
+
+| # | Date | Assignment | 
+|---|------|------------|
+| 1 | 2018-02-12 | Hash-based signature schemes.  Code your own signatures and sign with them. (more to come) |
 
 
 ## Final Projects
