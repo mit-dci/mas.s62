@@ -25,7 +25,30 @@ import (
 )
 
 func main() {
-	fmt.Printf("hi\n")
+
+	// Define your message
+	textString := "Hello there,"
+	fmt.Printf("%s\n", textString)
+
+	// convert message into a block
+	m := GetMessageFromString(textString)
+	fmt.Printf("%x\n", m[:])
+
+	// generate keys
+	sec, pub, err := GenerateKey()
+	if err != nil {
+		panic(err)
+	}
+
+	// sign message
+	sig := Sign(m, sec)
+
+	// verify signature
+	worked := Verify(m, pub, sig)
+
+	// done
+	fmt.Printf("Verify worked? %v\n", worked)
+	return
 }
 
 // Signature systems have 3 functions: GenerateKey(), Sign(), and Verify().
@@ -38,13 +61,13 @@ func main() {
 type Block [32]byte
 
 type SecretKey struct {
-	ZeroPre [32]Block
-	OnePre  [32]Block
+	ZeroPre [256]Block
+	OnePre  [256]Block
 }
 
 type PublicKey struct {
-	ZeroHash [32]Block
-	OneHash  [32]Block
+	ZeroHash [256]Block
+	OneHash  [256]Block
 }
 
 // A message to be signed is just a block.
@@ -67,7 +90,7 @@ func (self Block) IsPreimage(arg Block) bool {
 // A signature consists of 32 blocks.  It's a selective reveal of the private
 // key, according to the bits of the message.
 type Signature struct {
-	Preimage [32]Block
+	Preimage [256]Block
 }
 
 // ToHex returns a hex string of a signature
@@ -84,25 +107,30 @@ func (self Signature) ToHex() string {
 
 // GenerateKey takes no arguments, and returns a keypair and potentially an
 // error.  It gets randomness from the OS via crypto/rand
+// This can return an error if there is a problem with reading random bytes
 func GenerateKey() (SecretKey, PublicKey, error) {
 	// initialize SecretKey variable 'sec'.  Starts with all 00 bytes.
 	var sec SecretKey
 
 	var pub PublicKey
 
+	// If we made it this far, sec and pub should be OK.  We can return them.
 	return sec, pub, nil
 }
 
 // Sign takes a message and secret key, and returns a signature.
-func Sign(Message, SecretKey) Signature {
+func Sign(msg Message, sec SecretKey) Signature {
 	var sig Signature
+	//	var i uint32
 
 	return sig
 }
 
 // Verify takes a message, public key and signature, and returns a boolean
 // describing the validity of the signature.
-func Verify(Message, PublicKey, Signature) bool {
+func Verify(msg Message, pub PublicKey, sig Signature) bool {
+	//	var i uint32
+
 	return false
 }
 
