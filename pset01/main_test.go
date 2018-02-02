@@ -9,7 +9,6 @@ import (
 func TestGoodSig(t *testing.T) {
 
 	// generate message (hash of good)
-
 	msg := GetMessageFromString("good")
 
 	// generate keys
@@ -27,8 +26,6 @@ func TestGoodSig(t *testing.T) {
 	if !worked {
 		t.Fatalf("Verify returned false, expected true")
 	}
-
-	return
 }
 
 // TestBadSig signs, but then modifies the signature by hashing one of the
@@ -49,7 +46,6 @@ func TestBadSig(t *testing.T) {
 	sig := Sign(msg, sec)
 
 	// alter signature.  Hashing a part should break it except with 2^-256 chance
-
 	sig.Preimage[16] = sig.Preimage[26].Hash()
 
 	// verify signature
@@ -66,8 +62,6 @@ func TestBadSig(t *testing.T) {
 	if worked {
 		t.Fatalf("Verify returned true, expected false")
 	}
-
-	return
 }
 
 // TestGoodMany tests 1000 signatures that all should work.
@@ -88,7 +82,6 @@ func TestGoodMany(t *testing.T) {
 			t.Fatalf("Verify returned false, expected true")
 		}
 	}
-
 }
 
 // TestBadMany tests 1000 signatures, modifying all of them so that they should
@@ -104,12 +97,11 @@ func TestBadMany(t *testing.T) {
 		}
 		// sign message
 		sig := Sign(msg, sec)
-		sig.Preimage[2] = sig.Preimage[3].Hash()
+		sig.Preimage[i%10] = sig.Preimage[i%11].Hash()
 		// verify signature
 		worked := Verify(msg, pub, sig)
 		if worked {
 			t.Fatalf("Verify returned true, expected false")
 		}
 	}
-
 }

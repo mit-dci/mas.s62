@@ -14,7 +14,7 @@ Place:  E14-341
 Contact: [cryptocurrency-sp18-staff@mit.edu](cryptocurrency-sp18-staff@mit.edu)
 
 You are welcome to contact us via email.  However, if you think your
-question would be useful for others to see, please file it as [an issue](https://github.com/mit-dci/MAS.S62-public/issues)
+question would be useful for others to see, please file it as [an issue](https://github.com/mit-dci/mas.s62/issues)
 in this repository!
 
 Bitcoin and other cryptographic currencies have gained attention over
@@ -64,7 +64,7 @@ NOTE:  The schedule is in flux and subject to change.
 
 | # | Date | Assignment | 
 |---|------|------------|
-| 1 | 2018-02-12 | Hash-based signature schemes.  Code your own signatures and sign with them. (more to come) |
+| 1 | 2018-02-12 | Hash-based signature schemes.  Code your own signatures and sign with them! In the [pset01](https://github.com/mit-dci/mas.s62/tree/master/pset01) |
 
 
 ## Final Projects
