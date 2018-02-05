@@ -1,21 +1,14 @@
-/* This is problem set 01: Hash based signatures.
-A lot of this lab is set up and templated for you to get used to
-what may be an unfamiliar language (golang).
-Golang is syntactically similar to c / c++ in many ways, including comments.
-There are some good golang tutorials if you want to learn more.
+// Problem set 01: Hash based signatures.
 
-In this pset, you need to build a hash based signature system.  We'll use sha256
-as our hash function, and Lamports simple signature design.
+// A lot of this lab is set up and templated for you to get used to
+// what may be an unfamiliar language (Go).  Go is syntactically
+// similar to C / C++ in many ways, including comments.
 
-*/
+// In this pset, you need to build a hash based signature system.  We'll use sha256
+// as our hash function, and Lamport's simple signature design.
 
-/*
-
-Currently this compiles but doesn't do anything.
-For the first lab the whole thing can live in just one package and one file:
-main.go.
-
-*/
+// Currently this compiles but doesn't do anything.  For the first lab
+// the whole thing can live in just one package and one file: main.go.
 
 package main
 
@@ -103,6 +96,11 @@ func (self Signature) ToHex() string {
 	return s
 }
 
+// GetMessageFromString returns a Message which is the hash of the given string.
+func GetMessageFromString(s string) Message {
+	return sha256.Sum256([]byte(s))
+}
+
 // --- Functions
 
 // GenerateKey takes no arguments, and returns a keypair and potentially an
@@ -111,17 +109,18 @@ func (self Signature) ToHex() string {
 func GenerateKey() (SecretKey, PublicKey, error) {
 	// initialize SecretKey variable 'sec'.  Starts with all 00 bytes.
 	var sec SecretKey
-
 	var pub PublicKey
 
-	// If we made it this far, sec and pub should be OK.  We can return them.
+	// Your code here
+
 	return sec, pub, nil
 }
 
 // Sign takes a message and secret key, and returns a signature.
 func Sign(msg Message, sec SecretKey) Signature {
 	var sig Signature
-	//	var i uint32
+
+	// Your code here
 
 	return sig
 }
@@ -129,12 +128,8 @@ func Sign(msg Message, sec SecretKey) Signature {
 // Verify takes a message, public key and signature, and returns a boolean
 // describing the validity of the signature.
 func Verify(msg Message, pub PublicKey, sig Signature) bool {
-	//	var i uint32
+
+	// Your code here
 
 	return false
-}
-
-// GetMessageFromString returns a Message which is the hash of the given string.
-func GetMessageFromString(s string) Message {
-	return sha256.Sum256([]byte(s))
 }
