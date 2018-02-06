@@ -22,7 +22,7 @@ import (
 func main() {
 
 	// Define your message
-	textString := "Hello there,"
+	textString := "1"
 	fmt.Printf("%s\n", textString)
 
 	// convert message into a block
@@ -35,17 +35,22 @@ func main() {
 		panic(err)
 	}
 
+	// print pubkey.
+	fmt.Printf("pub:\n%s\n", pub.ToHex())
+
 	// sign message
-	sig := Sign(m, sec)
+	sig1 := Sign(m, sec)
+	fmt.Printf("sig1:\n%s\n", sig1.ToHex())
 
 	// verify signature
-	worked := Verify(m, pub, sig)
+	worked := Verify(m, pub, sig1)
 
 	// done
 	fmt.Printf("Verify worked? %v\n", worked)
 
-	fmt.Printf("pub:\n%s\n", pub.ToHex())
-	fmt.Printf("sig:\n%s\n", sig.ToHex())
+	// Forge signature
+	Forge()
+
 	return
 }
 
@@ -77,7 +82,7 @@ func (self PublicKey) ToHex() string {
 	for _, zero := range self.ZeroHash {
 		s += zero.ToHex()
 	}
-	for _, one := range self.ZeroHash {
+	for _, one := range self.OneHash {
 		s += one.ToHex()
 	}
 	return s
@@ -205,8 +210,8 @@ func GenerateKey() (SecretKey, PublicKey, error) {
 
 	// Your code here
 	// ===
-	// ===
 
+	// ===
 	return sec, pub, nil
 }
 
@@ -216,8 +221,8 @@ func Sign(msg Message, sec SecretKey) Signature {
 
 	// Your code here
 	// ===
-	// ===
 
+	// ===
 	return sig
 }
 
@@ -227,7 +232,7 @@ func Verify(msg Message, pub PublicKey, sig Signature) bool {
 
 	// Your code here
 	// ===
-	// ===
+
 	// ===
 
 	return true
