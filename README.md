@@ -26,6 +26,9 @@ be covered as well.  Programming assignments in the course will give
 practical experience interacting with these currencies, so some
 programming experience is required.
 
+Office hours: 4-6 PM Tuesdays
+Office hours location:  The big table outside E15-357
+
 ## Schedule
 
 NOTE:  The schedule is in flux and subject to change.
