@@ -42,7 +42,7 @@ NOTE:  The schedule is in flux and subject to change.
 | 1 | 2018-02-07 | Neha and Tadge | Introduction. Signatures, hashing, hash chains, e-cash, and motivation | [Untraceable Electronic Cash](http://www.wisdom.weizmann.ac.il/~/naor/PAPERS/untrace.pdf) |  |  |
 | 2 | 2018-02-12 | Tadge | Proof of Work and Mining | [Bitcoin](http://www.bitcoin.org/bitcoin.pdf) | | |
 | 3 | 2018-02-14 | Tadge | Signatures | find easy to read primer on eddsa / schnorr sigs | | LAB 1 DUE |
-| 4 | 2018-02-20 | Neha | Transactions and the UTXO model | | | |
+| 4 | 2018-02-20 | Neha | Transactions and the UTXO model | [Bitcoin Transactions](https://en.bitcoin.it/wiki/Transaction) | | |
 | 5 | 2018-02-21 | Tadge | Synchronization process, pruning | | |
 | 6 | 2018-02-26 | Tadge | TBD | | | |
 | 7 | 2018-02-28 | TBD | Hard / Soft Forks | | | |
@@ -58,13 +58,13 @@ NOTE:  The schedule is in flux and subject to change.
 | 17 | 2018-04-11 | TBD | TBD | | | |
 | 18 | 2018-04-18 | TBD | TBD | | | |
 | 19 | 2018-04-23 | TBD | TBD | | | |
-| 20 | 2018-04-25 | TBD | TBD | | | |
+| 20 | 2018-04-25 | TBD | NOTE: Class is in E15-359 | | | |
 | 21 | 2018-04-30 | TBD | TBD | | | |
 | 22 | 2018-05-02 | TBD | TBD | | | |
 | 23 | 2018-05-07 | TBD | TBD | | | |
-| 24 | 2018-05-09 | TBD | TBD | | | |
+| 24 | 2018-05-09 | TBD | NOTE: Class is in E15-359 | | | |
 | 25 | 2018-05-14 | | Final Presentations Day 1 | | | |
-| 26 | 2018-05-16 | | Final Presentations Day 2 | | | |
+| 26 | 2018-05-16 | | NOTE: Class is in E15-359 Final Presentations Day 2 | | | |
 
 ## Labs and Problem Sets
 
@@ -82,5 +82,3 @@ presentation and a 4 page paper on one of the following:
 2.  Add a new feature to an existing system like Bitcoin, Ethereum, or another cryptocurrency or shared ledger implementation
 3.  Propose a formalization in this space for a topic that has not been formalized yet  
 4.  Pose and solve an interesting problem
-
-## Readings and Resources
