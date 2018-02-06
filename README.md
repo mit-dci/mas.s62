@@ -68,9 +68,9 @@ NOTE:  The schedule is in flux and subject to change.
 
 ## Labs and Problem Sets
 
-| # | Date | Assignment | 
+| # | Due Date | Assignment | 
 |---|------|------------|
-| 1 | 2018-02-12 | Hash-based signature schemes.  Code your own signatures and sign with them! In the [pset01](https://github.com/mit-dci/mas.s62/tree/master/pset01) |
+| 1 | 2018-02-14 | Hash-based signature schemes.  Code your own signatures and sign with them! In the [pset01](https://github.com/mit-dci/mas.s62/tree/master/pset01) |
 
 
 ## Final Projects
