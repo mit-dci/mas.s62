@@ -44,7 +44,7 @@ NOTE:  The schedule is in flux and subject to change.
 | 3 | 2018-02-14 | Tadge | Signatures | find easy to read primer on eddsa / schnorr sigs | | LAB 1 DUE |
 | 4 | 2018-02-20 | Neha | Transactions and the UTXO model | [Bitcoin Transactions](https://en.bitcoin.it/wiki/Transaction) | | |
 | 5 | 2018-02-21 | Tadge | Synchronization process, pruning | | |
-| 6 | 2018-02-26 | Tadge | TBD | | | |
+| 6 | 2018-02-26 | Tadge | SPV, wallets, the network | | | |
 | 7 | 2018-02-28 | TBD | Hard / Soft Forks | | | |
 | 8 | 2018-03-05 | Neha | TBD |  | | |
 | 9 | 2018-03-07 | TBD | TBD |  | | |
