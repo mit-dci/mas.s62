@@ -63,10 +63,36 @@ type PublicKey struct {
 	OneHash  [256]Block
 }
 
+// --- Methods on PublicKey type
+
+// ToHex gives a hex string for a PublicKey. no newline at the end
+func (self PublicKey) ToHex() string {
+	// format is zerohash 0...255, onehash 0...255
+	var s string
+	for _, zero := range self.ZeroHash {
+		s += zero.ToHex()
+	}
+	for _, one := range self.ZeroHash {
+		s += one.ToHex()
+	}
+	return s
+}
+
+// HexToPubkey takes a string from PublicKey.ToHex() and turns it into a pubkey
+// will return an error if there are non hex characters or if the lenght is wrong.
+//func HexToPubkey(s string) (PublicKey, error) {
+
+//}
+
 // A message to be signed is just a block.
 type Message Block
 
 // --- Methods on the Block type
+
+// ToHex returns a hex encoded string of the block data, with no newlines.
+func (self Block) ToHex() string {
+	return fmt.Sprintf("%064x", self[:])
+}
 
 // Hash returns the sha256 hash of the block.
 func (self Block) Hash() Block {
@@ -112,6 +138,9 @@ func GenerateKey() (SecretKey, PublicKey, error) {
 	var pub PublicKey
 
 	// Your code here
+	// ===
+	// ===
+	// ===
 
 	return sec, pub, nil
 }
@@ -121,6 +150,9 @@ func Sign(msg Message, sec SecretKey) Signature {
 	var sig Signature
 
 	// Your code here
+	// ===
+	// ===
+	// ===
 
 	return sig
 }
@@ -130,6 +162,9 @@ func Sign(msg Message, sec SecretKey) Signature {
 func Verify(msg Message, pub PublicKey, sig Signature) bool {
 
 	// Your code here
+	// ===
+	// ===
+	// ===
 
 	return false
 }
