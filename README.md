@@ -17,6 +17,8 @@ You are welcome to contact us via email.  However, if you think your
 question would be useful for others to see, please file it as [an issue](https://github.com/mit-dci/mas.s62/issues)
 in this repository!
 
+Description:
+
 Bitcoin and other cryptographic currencies have gained attention over
 the years as the systems continue to evolve.  This course looks at the
 design of Bitcoin and other cryptocurrencies and how they function in
@@ -27,6 +29,7 @@ practical experience interacting with these currencies, so some
 programming experience is required.
 
 Office hours: 4-6 PM Tuesdays
+
 Office hours location:  The big table outside E15-357
 
 ## Schedule
