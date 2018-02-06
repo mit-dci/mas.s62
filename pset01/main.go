@@ -13,7 +13,9 @@
 package main
 
 import (
+	"bytes"
 	"crypto/sha256"
+	"encoding/hex"
 	"fmt"
 )
 
@@ -41,6 +43,9 @@ func main() {
 
 	// done
 	fmt.Printf("Verify worked? %v\n", worked)
+
+	fmt.Printf("pub:\n%s\n", pub.ToHex())
+	fmt.Printf("sig:\n%s\n", sig.ToHex())
 	return
 }
 
@@ -80,9 +85,34 @@ func (self PublicKey) ToHex() string {
 
 // HexToPubkey takes a string from PublicKey.ToHex() and turns it into a pubkey
 // will return an error if there are non hex characters or if the lenght is wrong.
-//func HexToPubkey(s string) (PublicKey, error) {
+func HexToPubkey(s string) (PublicKey, error) {
+	var p PublicKey
 
-//}
+	expectedLength := 256 * 2 * 64 // 256 blocks long, 2 rows, 64 hex char per block
+
+	// first, make sure hex string is of correct length
+	if len(s) != expectedLength {
+		return p, fmt.Errorf(
+			"Pubkey string %d characters, expect %d", expectedLength)
+	}
+
+	// decode from hex to a byte slice
+	bts, err := hex.DecodeString(s)
+	if err != nil {
+		return p, err
+	}
+	// we already checked the length of the hex string so don't need to re-check
+	buf := bytes.NewBuffer(bts)
+
+	for i, _ := range p.ZeroHash {
+		p.ZeroHash[i] = BlockFromByteSlice(buf.Next(32))
+	}
+	for i, _ := range p.OneHash {
+		p.OneHash[i] = BlockFromByteSlice(buf.Next(32))
+	}
+
+	return p, nil
+}
 
 // A message to be signed is just a block.
 type Message Block
@@ -106,6 +136,15 @@ func (self Block) IsPreimage(arg Block) bool {
 	return self.Hash() == arg
 }
 
+// BlockFromByteSlice returns a block from a variable length byte slice.
+// Watch out!  Silently ignores potential errors like the slice being too
+// long or too short!
+func BlockFromByteSlice(by []byte) Block {
+	var bl Block
+	copy(bl[:], by)
+	return bl
+}
+
 // A signature consists of 32 blocks.  It's a selective reveal of the private
 // key, according to the bits of the message.
 type Signature struct {
@@ -116,10 +155,37 @@ type Signature struct {
 func (self Signature) ToHex() string {
 	var s string
 	for _, b := range self.Preimage {
-		s += fmt.Sprintf("%x", b[:])
+		s += b.ToHex()
 	}
-	s += fmt.Sprintf("\n")
+
 	return s
+}
+
+// HexToSignature is the same idea as HexToPubkey, but half as big.  Format is just
+// every block of the signature in sequence.
+func HexToSignature(s string) (Signature, error) {
+	var sig Signature
+
+	expectedLength := 256 * 64 // 256 blocks long, 1 row, 64 hex char per block
+
+	// first, make sure hex string is of correct length
+	if len(s) != expectedLength {
+		return sig, fmt.Errorf(
+			"Pubkey string %d characters, expect %d", expectedLength)
+	}
+
+	// decode from hex to a byte slice
+	bts, err := hex.DecodeString(s)
+	if err != nil {
+		return sig, err
+	}
+	// we already checked the length of the hex string so don't need to re-check
+	buf := bytes.NewBuffer(bts)
+
+	for i, _ := range sig.Preimage {
+		sig.Preimage[i] = BlockFromByteSlice(buf.Next(32))
+	}
+	return sig, nil
 }
 
 // GetMessageFromString returns a Message which is the hash of the given string.
@@ -140,7 +206,6 @@ func GenerateKey() (SecretKey, PublicKey, error) {
 	// Your code here
 	// ===
 	// ===
-	// ===
 
 	return sec, pub, nil
 }
@@ -150,7 +215,6 @@ func Sign(msg Message, sec SecretKey) Signature {
 	var sig Signature
 
 	// Your code here
-	// ===
 	// ===
 	// ===
 
@@ -166,5 +230,5 @@ func Verify(msg Message, pub PublicKey, sig Signature) bool {
 	// ===
 	// ===
 
-	return false
+	return true
 }
