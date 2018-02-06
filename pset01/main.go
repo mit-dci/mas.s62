@@ -235,5 +235,5 @@ func Verify(msg Message, pub PublicKey, sig Signature) bool {
 
 	// ===
 
-	return true
+	return false
 }
