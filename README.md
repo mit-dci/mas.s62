@@ -41,7 +41,7 @@ NOTE:  The schedule is in flux and subject to change.
 
 | # | Date | Lecturer | Topic | Readings | Lecture Notes | Labs |
 |---|------|----------|-------|----------|---------------|-|
-| 1 | 2018-02-07 | Neha and Tadge | Introduction. Signatures, hashing, hash chains, e-cash, and motivation | [Untraceable Electronic Cash](http://www.wisdom.weizmann.ac.il/~/naor/PAPERS/untrace.pdf) |  |  |
+| 1 | 2018-02-07 | Neha and Tadge | Introduction. Signatures, hashing, hash chains, e-cash, and motivation | [Untraceable Electronic Cash](http://www.wisdom.weizmann.ac.il/~/naor/PAPERS/untrace.pdf) | [tadge sildes](https://github.com/mit-dci/mas.s62/tree/master/slides/lec01-tadge.pdf) |  |
 | 2 | 2018-02-12 | Tadge | Proof of Work and Mining | [Bitcoin](http://www.bitcoin.org/bitcoin.pdf) | | |
 | 3 | 2018-02-14 | Tadge | Signatures | find easy to read primer on eddsa / schnorr sigs | | LAB 1 DUE |
 | 4 | 2018-02-20 | Neha | Transactions and the UTXO model | [Bitcoin Transactions](https://en.bitcoin.it/wiki/Transaction) | | |
