@@ -37,5 +37,19 @@ go test
 
 ## Part 2
 
+There is a public key and 4 signatures provided in the signatures.go file.  Given this data, you should be able to forge another signature of your choosing.  Make the message which you sign have the word "forge" in it, and also your name or email address.  There is a forge_test.go file which will check for the term 'forge' in the signed message.
+
+Note that this may take a decent amount of CPU time even on a good computer.  We're not talking days or anything though; 4 signatures is enough to make it so that an efficient implementation is relatively quick.
+
+To make sure you're in the right ballpark: On an AMD Ryzen 7 1700 CPU, using 8 cores, my (adiabat / Tadge) implementation could create a forgery in about 3 minutes of real time.  An equally efficient signle core implementation would take about 25 minutes.  On slower CPUs or with less efficient code it may take longer.
+
+If you use CUDA or AVX-512 or AES-NI or something crazy like that and get it to run in 5 seconds, cool!  It should still run in go and pass the tests here, but note that you can do all the "work" in a different program and import the solution to this code if you want.
+
+That's certainly not necessary though as it shouldn't take that long on most computers.  A raspberry pi might be too slow though.  If you get the forge_test.go test to pass, you're probably all set!  just run
+
+```
+go test
+```
+and see what fun errors you get! :)
 
 ## Submission

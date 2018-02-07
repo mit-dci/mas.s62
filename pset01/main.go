@@ -7,8 +7,15 @@
 // In this pset, you need to build a hash based signature system.  We'll use sha256
 // as our hash function, and Lamport's simple signature design.
 
-// Currently this compiles but doesn't do anything.  For the first lab
-// the whole thing can live in just one package and one file: main.go.
+// Currently this compiles but doesn't do much.  You need to implement parts which
+// say "your code here".  It also could be useful to make your own functions or
+// methods on existing structs, espectially in the forge.go file.
+
+// If you run `go test` and everything passes, you're all set.
+
+// There's probably some way to get it to pass the tests without making an actual
+// functioning signature scheme, but I think that would be harder than just doing
+// it the right way :)
 
 package main
 
@@ -49,7 +56,12 @@ func main() {
 	fmt.Printf("Verify worked? %v\n", worked)
 
 	// Forge signature
-	Forge()
+	msgString, sig, err := Forge()
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Printf("forged msg: %s sig: %s\n", msgString, sig.ToHex())
 
 	return
 }
