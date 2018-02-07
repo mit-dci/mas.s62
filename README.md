@@ -32,6 +32,8 @@ Office hours: 4-6 PM Tuesdays
 
 Office hours location:  The big table outside E15-357
 
+TA: James Lovejoy [jlovejoy@mit.edu](jlovejoy@mit.edu)
+
 ## Schedule
 
 NOTE:  The schedule is in flux and subject to change.
