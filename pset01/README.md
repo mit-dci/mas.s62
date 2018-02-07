@@ -8,6 +8,8 @@ You'll implement all labs in Go. The [Go website](https://golang.org/) contains 
 
 You will probably find it most convenient to install Go 1.9 on your own computer, but you can also use it on Athena.
 
+You can use a regular editor like vim / emacs / notepad.exe.  There is also a go-specific open source IDE that Tadge recommends & uses, [LiteIDE](https://github.com/visualfc/liteide) which may make things easier.
+
 In order to submit your lab, you'll need to use git.  You can read about [git here](https://www.kernel.org/pub/software/scm/git/docs/user-manual.html).
 
 ## Collaboration Policy
