@@ -42,7 +42,7 @@ NOTE:  The schedule is in flux and subject to change.
 | # | Date | Lecturer | Topic | Readings | Lecture Notes | Labs |
 |---|------|----------|-------|----------|---------------|-|
 | 1 | 2018-02-07 | Neha and Tadge | Introduction. Signatures, hashing, hash chains, e-cash, and motivation | [Untraceable Electronic Cash](http://www.wisdom.weizmann.ac.il/~/naor/PAPERS/untrace.pdf) | [tadge's slides](https://github.com/mit-dci/mas.s62/tree/master/slides/lec01-tadge.pdf), [neha's slides](https://github.com/mit-dci/mas.s62/tree/master/slides/lec01-neha.pdf) |  |
-| 2 | 2018-02-12 | Tadge | Proof of Work and Mining | [Bitcoin](http://www.bitcoin.org/bitcoin.pdf) | | |
+| 2 | 2018-02-12 | Neha and Tadge | Proof of Work and Mining | [Bitcoin](http://www.bitcoin.org/bitcoin.pdf) | | |
 | 3 | 2018-02-14 | Tadge | Signatures | find easy to read primer on eddsa / schnorr sigs | | LAB 1 DUE |
 | 4 | 2018-02-20 | Neha | Transactions and the UTXO model | [Bitcoin Transactions](https://en.bitcoin.it/wiki/Transaction) | | |
 | 5 | 2018-02-21 | Tadge | Synchronization process, pruning | | |
@@ -73,6 +73,8 @@ NOTE:  The schedule is in flux and subject to change.
 | # | Due Date | Assignment | 
 |---|------|------------|
 | 1 | 2018-02-14 | Hash-based signature schemes.  Code your own signatures and sign with them! In the [pset01](https://github.com/mit-dci/mas.s62/tree/master/pset01) |
+| 2 | 2018-02-21 | Mine your name |
+| 3 | 2018-02-28 | UTXOhunt |
 
 
 ## Final Projects
