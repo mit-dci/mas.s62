@@ -52,4 +52,16 @@ go test
 ```
 and see what fun errors you get! :)
 
+## Testing and Timeouts
+
+To run tests,
+```
+$ go test
+```
+will work, but by default it will give up after 10 minutes.  If your functions need more time to complete, you can change the timeout by typing
+```
+$ go test -timeout 30m
+```
+to timeout after 30 minutes instead of 10.
+
 ## Submission
