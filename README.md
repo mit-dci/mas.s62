@@ -59,7 +59,7 @@ NOTE:  The schedule is in flux and subject to change.
 | 16 | 2018-04-09 | TBD | TBD | | | |
 | 17 | 2018-04-11 | TBD | TBD | | | |
 | 18 | 2018-04-18 | TBD | TBD | | | |
-| 19 | 2018-04-23 | TBD | TBD | | | |
+| 19 | 2018-04-23 | Joseph Bonneau | Ethereum and smart contracts | | | |
 | 20 | 2018-04-25 | TBD | NOTE: Class is in E15-359 | | | |
 | 21 | 2018-04-30 | TBD | TBD | | | |
 | 22 | 2018-05-02 | TBD | TBD | | | |
@@ -76,6 +76,7 @@ NOTE:  The schedule is in flux and subject to change.
 | 2 | 2018-02-21 | Mine your name |
 | 3 | 2018-02-28 | UTXOhunt |
 
+All labs are due by 11:59 PM on the day specified.
 
 ## Final Projects
 
