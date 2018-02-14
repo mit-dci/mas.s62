@@ -43,7 +43,7 @@ NOTE:  The schedule is in flux and subject to change.
 |---|------|----------|-------|----------|---------------|-|
 | 1 | 2018-02-07 | Neha and Tadge | Introduction. Signatures, hashing, hash chains, e-cash, and motivation | [Untraceable Electronic Cash](http://www.wisdom.weizmann.ac.il/~/naor/PAPERS/untrace.pdf) | [tadge's slides](https://github.com/mit-dci/mas.s62/tree/master/slides/lec01-tadge.pdf), [neha's slides](https://github.com/mit-dci/mas.s62/tree/master/slides/lec01-neha.ppt) |  |
 | 2 | 2018-02-12 | Neha and Tadge | Proof of Work and Mining | [Bitcoin](http://www.bitcoin.org/bitcoin.pdf) | [tadge's slides](https://github.com/mit-dci/mas.s62/tree/master/slides/lec02-tadge.pdf) | |
-| 3 | 2018-02-14 | Tadge | Signatures | [Simple Schnorr Multi-Signatures with Applications to Bitcoin](https://eprint.iacr.org/2018/068.pdf) | | LAB 1 DUE |
+| 3 | 2018-02-14 | Tadge | Signatures | [Simple Schnorr Multi-Signatures with Applications to Bitcoin](https://eprint.iacr.org/2018/068.pdf) | [tadge's slides](https://github.com/mit-dci/mas.s62/tree/master/slides/lec03-tadge.pdf) | LAB 1 DUE |
 | 4 | 2018-02-20 | Neha | Transactions and the UTXO model | [Bitcoin Transactions](https://en.bitcoin.it/wiki/Transaction) | | |
 | 5 | 2018-02-21 | Tadge | Synchronization process, pruning | | |
 | 6 | 2018-02-26 | Tadge | SPV, wallets, the network | | | |
