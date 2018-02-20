@@ -11,6 +11,8 @@ There is a server component to this pset, which might go down or crash.  This is
 
 The server, at hubris.media.mit.edu, should be up and running from the 20th to the 28th.
 
+note: The server was down for an hour or two on Tuesday the 20th, and is back up after fixing some bugs.  
+
 ## Block specifications
 
 Blocks are ASCII strings, with a maximum lenght of 100 characters. The block format is:
