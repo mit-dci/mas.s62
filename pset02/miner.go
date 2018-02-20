@@ -20,4 +20,5 @@ func CheckWork(bl Block, targetBits uint8) bool {
 	// your checkwork code here
 	// feel free to inline this or do something else.  I just did it this way
 	// so I'm giving empty functions here.
+	return false
 }
