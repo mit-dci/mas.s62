@@ -47,7 +47,7 @@ NOTE:  The schedule is in flux and subject to change.
 | 4 | 2018-02-20 | Neha | Transactions and the UTXO model | [Bitcoin Transactions](https://en.bitcoin.it/wiki/Transaction) | [neha's slides](https://github.com/mit-dci/mas.s62/tree/master/slides/lec04-neha.pptx) | |
 | 5 | 2018-02-21 | Tadge | Synchronization process, pruning | | |
 | 6 | 2018-02-26 | Tadge | SPV, wallets, the network | | | |
-| 7 | 2018-02-28 | TBD | Hard / Soft Forks | | | |
+| 7 | 2018-02-28 | TBD | Hard / Soft Forks | | | LAB 2 DUE |
 | 8 | 2018-03-05 | Neha | TBD |  | | |
 | 9 | 2018-03-07 | TBD | TBD |  | | |
 | 10 | 2018-03-12 | Tadge | Fee estimation, RBF | | | |
@@ -73,8 +73,8 @@ NOTE:  The schedule is in flux and subject to change.
 | # | Due Date | Assignment | 
 |---|------|------------|
 | 1 | 2018-02-14 | Hash-based signature schemes.  Code your own signatures and sign with them! In the [pset01](https://github.com/mit-dci/mas.s62/tree/master/pset01) |
-| 2 | 2018-02-21 | Mine your name |
-| 3 | 2018-02-28 | UTXOhunt |
+| 2 | 2018-02-28 | Mine your name |
+| 3 |  | UTXOhunt |
 
 All labs are due by 11:59 PM on the day specified.
 
