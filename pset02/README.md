@@ -9,9 +9,9 @@ Due on the last second of the month of February: 2018-02-28 23:59:59 EST
 
 There is a server component to this pset, which might go down or crash.  This is not a decentralized network hardened by 9 years of open source improvements and worth hundreds of billions of dollars.  It's a server I coded just for this pset.  If it goes down, bug me on IRC and I'll try to fix it quickly so that you can increase your mining score.
 
-The server, at hubris.media.mit.edu, should be up and running from the 20th to the 28th.
+The server, at hubris.media.mit.edu, should be up and running from the 20th to the 28th. 
 
-## server down again due to physical compromise (someone unplugged it and moved it).  We estimate that it will be back up by 10:30 am Thursday the 22nd.  Sorry and now we see the risks of a central point of failure in the blockchain.
+Server is back up on 2018-02-22 10:45 EST
 
 ## Block specifications
 
