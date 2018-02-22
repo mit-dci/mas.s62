@@ -11,7 +11,7 @@ There is a server component to this pset, which might go down or crash.  This is
 
 The server, at hubris.media.mit.edu, should be up and running from the 20th to the 28th.
 
-note: The server was down for an hour or two on Tuesday the 20th, and is back up after fixing some bugs.  
+## server down again due to physical compromise (someone unplugged it and moved it).  We estimate that it will be back up by 10:30 am Thursday the 22nd.  Sorry and now we see the risks of a central point of failure in the blockchain.
 
 ## Block specifications
 
