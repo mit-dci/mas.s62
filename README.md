@@ -46,7 +46,7 @@ NOTE:  The schedule is in flux and subject to change.
 | 3 | 2018-02-14 | Tadge | Signatures | [Simple Schnorr Multi-Signatures with Applications to Bitcoin](https://eprint.iacr.org/2018/068.pdf) | [tadge's slides](https://github.com/mit-dci/mas.s62/tree/master/slides/lec03-tadge.pdf) | LAB 1 DUE |
 | 4 | 2018-02-20 | Neha | Transactions and the UTXO model | [Bitcoin Transactions](https://en.bitcoin.it/wiki/Transaction) | [neha's slides](https://github.com/mit-dci/mas.s62/tree/master/slides/lec04-neha.pptx) | |
 | 5 | 2018-02-21 | Tadge | Synchronization process, pruning | | [tadge's slides](https://github.com/mit-dci/mas.s62/blob/master/slides/lec05-tadge.pdf) |
-| 6 | 2018-02-26 | Tadge | SPV and wallet types | | | [tadge's slides](https://github.com/mit-dci/mas.s62/blob/master/slides/lec06-tadge.pdf) | NOTE: No office hours 2018-02-27 ! |
+| 6 | 2018-02-26 | Tadge | SPV and wallet types | | [tadge's slides](https://github.com/mit-dci/mas.s62/blob/master/slides/lec06-tadge.pdf) | NOTE: No office hours 2018-02-27 ! |
 | 7 | 2018-02-28 | Alin Tomescu | OP_RETURN and Catena | | | LAB 2 DUE |
 | 8 | 2018-03-05 | Neha | TBD |  | | |
 | 9 | 2018-03-07 | TBD | TBD |  | | |
