@@ -48,7 +48,7 @@ NOTE:  The schedule is in flux and subject to change.
 | 5 | 2018-02-21 | Tadge | Synchronization process, pruning | | [tadge's slides](https://github.com/mit-dci/mas.s62/blob/master/slides/lec05-tadge.pdf) |
 | 6 | 2018-02-26 | Tadge | SPV and wallet types | | [tadge's slides](https://github.com/mit-dci/mas.s62/blob/master/slides/lec06-tadge.pdf) | NOTE: No office hours 2018-02-27 ! |
 | 7 | 2018-02-28 | Alin Tomescu | OP_RETURN and Catena | | | LAB 2 DUE |
-| 8 | 2018-03-05 | Neha | TBD |  | | |
+| 8 | 2018-03-05 | Neha | Forks |  | | |
 | 9 | 2018-03-07 | TBD | TBD |  | | |
 | 10 | 2018-03-12 | Tadge | Fee estimation, RBF | | | |
 | 11 | 2018-03-14 | Tadge | TBD | | | |
