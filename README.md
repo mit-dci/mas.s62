@@ -47,9 +47,9 @@ NOTE:  The schedule is in flux and subject to change.
 | 4 | 2018-02-20 | Neha | Transactions and the UTXO model | [Bitcoin Transactions](https://en.bitcoin.it/wiki/Transaction) | [neha's slides](https://github.com/mit-dci/mas.s62/tree/master/slides/lec04-neha.pptx) | |
 | 5 | 2018-02-21 | Tadge | Synchronization process, pruning | | [tadge's slides](https://github.com/mit-dci/mas.s62/blob/master/slides/lec05-tadge.pdf) |
 | 6 | 2018-02-26 | Tadge | SPV and wallet types | | [tadge's slides](https://github.com/mit-dci/mas.s62/blob/master/slides/lec06-tadge.pdf) | NOTE: No office hours 2018-02-27 ! |
-| 7 | 2018-02-28 | Alin Tomescu | OP_RETURN and Catena | | | LAB 2 DUE |
+| 7 | 2018-02-28 | Alin Tomescu | OP_RETURN and Catena | | [alin's slides](https://github.com/mit-dci/mas.s62/blob/master/slides/lec07-alin.pdf), [Catena paper](https://people.csail.mit.edu/alinush/papers/catena-sp2017.pdf), [Catena code](https://www.github.com/alinush/catena-java) | LAB 2 DUE |
 | 8 | 2018-03-05 | Neha | Forks |  | | |
-| 9 | 2018-03-07 | TBD | TBD |  | | |
+| 9 | 2018-03-07 | Sharon Goldberg | Peer-to-peer networks |  | | |
 | 10 | 2018-03-12 | Tadge | Fee estimation, RBF | | | |
 | 11 | 2018-03-14 | Tadge | TBD | | | |
 | 12 | 2018-03-19 | TBD | TBD | | | |
