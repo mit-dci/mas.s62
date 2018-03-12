@@ -50,7 +50,7 @@ NOTE:  The schedule is in flux and subject to change.
 | 7 | 2018-02-28 | Alin Tomescu | OP_RETURN and Catena | | [alin's slides](https://github.com/mit-dci/mas.s62/blob/master/slides/lec07-alin.pdf), [Catena paper](https://people.csail.mit.edu/alinush/papers/catena-sp2017.pdf), [Catena code](https://www.github.com/alinush/catena-java) | LAB 2 DUE |
 | 8 | 2018-03-05 | Neha | Forks |  | | |
 | 9 | 2018-03-07 | Sharon Goldberg | Peer-to-peer networks |  | | |
-| 10 | 2018-03-12 | Tadge | Fee estimation, RBF | | | |
+| 10 | 2018-03-12 | Tadge | PoW recap, other fork types | | [tadge's slides](https://github.com/mit-dci/mas.s62/blob/master/slides/lec10-tadge.pdf) | |
 | 11 | 2018-03-14 | Tadge | TBD | | | |
 | 12 | 2018-03-19 | TBD | TBD | | | |
 | 13 | 2018-03-21 | TBD | TBD | | | |
