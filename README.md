@@ -51,7 +51,7 @@ NOTE:  The schedule is in flux and subject to change.
 | 8 | 2018-03-05 | Neha | Forks | [neha's slides](https://github.com/mit-dci/mas.s62/blob/master/slides/lec08.pptx) | | |
 | 9 | 2018-03-07 | Sharon Goldberg | Peer-to-peer networks |  | | |
 | 10 | 2018-03-12 | Tadge | PoW recap, other fork types | | [tadge's slides](https://github.com/mit-dci/mas.s62/blob/master/slides/lec10-tadge.pdf) | |
-| 11 | 2018-03-14 | Tadge | Fees | | [tadge's slides](https://github.com/mit-dci/mas.s62/blob/master/slides/lec11-tadge.pdf | |
+| 11 | 2018-03-14 | Tadge | Fees | | [tadge's slides](https://github.com/mit-dci/mas.s62/blob/master/slides/lec11-tadge.pdf | Note: Office hours on Thursday the 15th, 4-6 usual place |
 | 12 | 2018-03-19 | Tadge | Transaction malleability and segregated witness | | | |
 | 13 | 2018-03-21 | Tadge | Payment channels and Lightning Network | | | |
 | 14 | 2018-04-02 | TBD | TBD | | | |
@@ -74,7 +74,7 @@ NOTE:  The schedule is in flux and subject to change.
 |---|------|------------|
 | 1 | 2018-02-14 | Hash-based signature schemes.  Code your own signatures and sign with them! In the [pset01](https://github.com/mit-dci/mas.s62/tree/master/pset01) |
 | 2 | 2018-02-28 | Mine your name |
-| 3 |  | UTXOhunt |
+| 3 | 2018-03-21 | UTXOhunt |
 
 All labs are due by 11:59 PM on the day specified.
 
