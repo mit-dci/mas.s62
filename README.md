@@ -51,9 +51,9 @@ NOTE:  The schedule is in flux and subject to change.
 | 8 | 2018-03-05 | Neha | Forks | [neha's slides](https://github.com/mit-dci/mas.s62/blob/master/slides/lec08.pptx) | | |
 | 9 | 2018-03-07 | Sharon Goldberg | Peer-to-peer networks |  | | |
 | 10 | 2018-03-12 | Tadge | PoW recap, other fork types | | [tadge's slides](https://github.com/mit-dci/mas.s62/blob/master/slides/lec10-tadge.pdf) | |
-| 11 | 2018-03-14 | Tadge | TBD | | | |
-| 12 | 2018-03-19 | TBD | TBD | | | |
-| 13 | 2018-03-21 | TBD | TBD | | | |
+| 11 | 2018-03-14 | Tadge | Fees | | [tadge's slides](https://github.com/mit-dci/mas.s62/blob/master/slides/lec11-tadge.pdf | |
+| 12 | 2018-03-19 | Tadge | Transaction malleability and segregated witness | | | |
+| 13 | 2018-03-21 | Tadge | Payment channels and Lightning Network | | | |
 | 14 | 2018-04-02 | TBD | TBD | | | |
 | 15 | 2018-04-04 | TBD | TBD | | | |
 | 16 | 2018-04-09 | TBD | TBD | | | |
