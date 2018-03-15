@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
 
 	"github.com/btcsuite/btcd/btcec"
@@ -9,6 +10,17 @@ import (
 	"github.com/btcsuite/btcd/wire"
 	"github.com/btcsuite/btcutil"
 )
+
+// TxToHex takes a transaction and outputs the serialized tx in hex.
+// Provided to make things easier.  Returns an empty string if there's an error.
+func TxToHex(tx *wire.MsgTx) string {
+	if tx == nil {
+		return ""
+	}
+	buf := new(bytes.Buffer)
+	tx.Serialize(buf)
+	return fmt.Sprintf("%x", buf.Bytes())
+}
 
 func EZTxBuilder() *wire.MsgTx {
 
