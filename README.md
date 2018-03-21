@@ -52,7 +52,7 @@ NOTE:  The schedule is in flux and subject to change.
 | 9 | 2018-03-07 | Sharon Goldberg | Peer-to-peer networks |  | | |
 | 10 | 2018-03-12 | Tadge | PoW recap, other fork types | | [tadge's slides](https://github.com/mit-dci/mas.s62/blob/master/slides/lec10-tadge.pdf) | |
 | 11 | 2018-03-14 | Tadge | Fees | | [tadge's slides](https://github.com/mit-dci/mas.s62/blob/master/slides/lec11-tadge.pdf) | Note: Office hours on Thursday the 15th, 4-6 usual place |
-| 12 | 2018-03-19 | Tadge | Transaction malleability and segregated witness | | | |
+| 12 | 2018-03-19 | Tadge | Transaction malleability and segregated witness | | [tadge's slides](https://github.com/mit-dci/mas.s62/blob/master/slides/lec11-tadge.pdf) | |
 | 13 | 2018-03-21 | Tadge | Payment channels and Lightning Network | | | |
 | 14 | 2018-04-02 | TBD | TBD | | | |
 | 15 | 2018-04-04 | TBD | TBD | | | |
