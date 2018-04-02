@@ -80,7 +80,7 @@ All labs are due by 11:59 PM on the day specified.
 
 ## Final Projects
 
-You may form groups of 1-4 students and prepare a
+You may form groups of 2-4 students and prepare a
 presentation and a 4 page paper on one of the following:
 
 1.  Design and implement an application or system ([project ideas](projects.md))
