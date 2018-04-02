@@ -54,11 +54,11 @@ NOTE:  The schedule is in flux and subject to change.
 | 11 | 2018-03-14 | Tadge | Fees | | [tadge's slides](https://github.com/mit-dci/mas.s62/blob/master/slides/lec11-tadge.pdf) | Note: Office hours on Thursday the 15th, 4-6 usual place |
 | 12 | 2018-03-19 | Tadge | Transaction malleability and segregated witness | | [tadge's slides](https://github.com/mit-dci/mas.s62/blob/master/slides/lec11-tadge.pdf) | |
 | 13 | 2018-03-21 | Tadge | Payment channels and Lightning Network | | | |
-| 14 | 2018-04-02 | TBD | TBD | | | |
-| 15 | 2018-04-04 | TBD | TBD | | | |
-| 16 | 2018-04-09 | TBD | TBD | | | |
-| 17 | 2018-04-11 | TBD | TBD | | | |
-| 18 | 2018-04-18 | TBD | TBD | | | |
+| 14 | 2018-04-02 | Tadge | Lightning Network and Cross-chain Swaps | | | |
+| 15 | 2018-04-04 | Tadge | Discreet Log Contracts | | | |
+| 16 | 2018-04-09 | Tadge | MAST, Taproot, Graftroot | | | |
+| 17 | 2018-04-11 | Tadge | Anonimity, Coinjoin and Signature Aggregation | | | |
+| 18 | 2018-04-18 | Tadge | Confidential Transactions and Mimblewimble | | | |
 | 19 | 2018-04-23 | Joseph Bonneau | Ethereum and smart contracts | | | |
 | 20 | 2018-04-25 | TBD | NOTE: Class is in E15-359 | | | |
 | 21 | 2018-04-30 | TBD | TBD | | | |
