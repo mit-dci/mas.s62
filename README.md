@@ -56,9 +56,9 @@ NOTE:  The schedule is in flux and subject to change.
 | 13 | 2018-03-21 | Tadge | Payment channels and Lightning Network | | [tadge's slides](https://github.com/mit-dci/mas.s62/blob/master/slides/lec13-tadge.pdf) | |
 | 14 | 2018-04-02 | Tadge | Lightning Network and Cross-chain Swaps | | [tadge's slides](https://github.com/mit-dci/mas.s62/blob/master/slides/lec14-tadge.pdf) | |
 | 15 | 2018-04-04 | Tadge | Discreet Log Contracts | | [tadge's slides](https://github.com/mit-dci/mas.s62/blob/master/slides/lec15-tadge.pdf) | |
-| 16 | 2018-04-09 | Tadge | MAST, Taproot, Graftroot | | | |
-| 17 | 2018-04-11 | Tadge | Anonimity, Coinjoin and Signature Aggregation | | | |
-| 18 | 2018-04-18 | Tadge | Confidential Transactions and Mimblewimble | | | |
+| 16 | 2018-04-09 | Tadge | MAST, Taproot, Graftroot | | [tadge's slides](https://github.com/mit-dci/mas.s62/blob/master/slides/lec16-tadge.pdf) | |
+| 17 | 2018-04-11 | Tadge | Anonimity, Coinjoin and Signature Aggregation | | [tadge's slides](https://github.com/mit-dci/mas.s62/blob/master/slides/lec17-tadge.pdf) | |
+| 18 | 2018-04-18 | Tadge | Confidential Transactions | | | |
 | 19 | 2018-04-23 | Joseph Bonneau | Ethereum and smart contracts | | | |
 | 20 | 2018-04-25 | TBD | NOTE: Class is in E15-359 | | | |
 | 21 | 2018-04-30 | TBD | TBD | | | |
@@ -80,10 +80,12 @@ All labs are due by 11:59 PM on the day specified.
 
 ## Final Projects
 
-You may form groups of 2-4 students and prepare a
-presentation and a 4 page paper on one of the following:
+You may form groups of 1-4 students and prepare a
+presentation and a ~4 page paper on one of the following:
 
-1.  Design and implement an application or system ([project ideas](projects.md))
+Project proposals are due 2018-04-18 29:59 EDT - submit them via github repo.  (e-mail is also OK if you can get git to work)
+
+1.  Design and implement an application or system
 2.  Add a new feature to an existing system like Bitcoin, Ethereum, or another cryptocurrency or shared ledger implementation
 3.  Propose a formalization in this space for a topic that has not been formalized yet  
 4.  Pose and solve an interesting problem
