@@ -58,7 +58,7 @@ NOTE:  The schedule is in flux and subject to change.
 | 15 | 2018-04-04 | Tadge | Discreet Log Contracts | | [tadge's slides](https://github.com/mit-dci/mas.s62/blob/master/slides/lec15-tadge.pdf) | |
 | 16 | 2018-04-09 | Tadge | MAST, Taproot, Graftroot | | [tadge's slides](https://github.com/mit-dci/mas.s62/blob/master/slides/lec16-tadge.pdf) | |
 | 17 | 2018-04-11 | Tadge | Anonimity, Coinjoin and Signature Aggregation | | [tadge's slides](https://github.com/mit-dci/mas.s62/blob/master/slides/lec17-tadge.pdf) | |
-| 18 | 2018-04-18 | Tadge | Confidential Transactions | | | |
+| 18 | 2018-04-18 | Tadge | Confidential Transactions | | [tadge's slides](https://github.com/mit-dci/mas.s62/blob/master/slides/lec18-tadge.pdf) | |
 | 19 | 2018-04-23 | Joseph Bonneau | Ethereum and smart contracts | | | |
 | 20 | 2018-04-25 | TBD | NOTE: Class is in E15-359 | | | |
 | 21 | 2018-04-30 | TBD | TBD | | | |
