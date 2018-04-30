@@ -60,9 +60,9 @@ NOTE:  The schedule is in flux and subject to change.
 | 17 | 2018-04-11 | Tadge | Anonimity, Coinjoin and Signature Aggregation | | [tadge's slides](https://github.com/mit-dci/mas.s62/blob/master/slides/lec17-tadge.pdf) | |
 | 18 | 2018-04-18 | Tadge | Confidential Transactions | | [tadge's slides](https://github.com/mit-dci/mas.s62/blob/master/slides/lec18-tadge.pdf) | |
 | 19 | 2018-04-23 | Joseph Bonneau | Ethereum and smart contracts | | | |
-| 20 | 2018-04-25 | TBD | NOTE: Class is in E15-359 | | | |
-| 21 | 2018-04-30 | TBD | TBD | | | |
-| 22 | 2018-05-02 | TBD | TBD | | | |
+| 20 | 2018-04-25 | Tadge | More about Ethereum NOTE: Class is in E15-359 | | | |
+| 21 | 2018-04-30 | David Vorick | Proof of Work at Industrial Scales (note: no video will be taken) | | | |
+| 22 | 2018-05-02 | Tadge | Alternative consensus mechanisms | | | |
 | 23 | 2018-05-07 | TBD | TBD | | | |
 | 24 | 2018-05-09 | TBD | NOTE: Class is in E15-359 | | | |
 | 25 | 2018-05-14 | | Final Presentations Day 1 | | | |
