@@ -32,6 +32,8 @@ Office hours: 4-6 PM Tuesdays
 
 Office hours location:  The big table outside E15-357
 
+### Office hours 2018-05-08 are in Koch Cafe -- all spaces in the Media Lab building are taken by the event this day.
+
 TA: James Lovejoy [jlovejoy@mit.edu](jlovejoy@mit.edu)
 
 ## Schedule
@@ -62,9 +64,9 @@ NOTE:  The schedule is in flux and subject to change.
 | 19 | 2018-04-23 | Joseph Bonneau | Ethereum and smart contracts | | | |
 | 20 | 2018-04-25 | Tadge | More about Ethereum NOTE: Class is in E15-359 | | | |
 | 21 | 2018-04-30 | David Vorick | Proof of Work at Industrial Scales (note: no video will be taken) | | | |
-| 22 | 2018-05-02 | Tadge | Alternative consensus mechanisms | | | |
-| 23 | 2018-05-07 | TBD | TBD | | | |
-| 24 | 2018-05-09 | TBD | NOTE: Class is in E15-359 | | | |
+| 22 | 2018-05-02 | Tadge | Alternative consensus mechanisms | | [tadge's slides](https://github.com/mit-dci/mas.s62/blob/master/slides/lec22-tadge.pdf)  | |
+| 23 | 2018-05-07 | Tadge | New Directions in Crypto* | | [tadge's slides](https://github.com/mit-dci/mas.s62/blob/master/slides/lec23-tadge.pdf) | |
+| 24 | 2018-05-09 | Neha | zkLedger NOTE: Class is in E15-359 | | | |
 | 25 | 2018-05-14 | | Final Presentations Day 1 | | | |
 | 26 | 2018-05-16 | | NOTE: Class is in E15-359 Final Presentations Day 2 | | | |
 
