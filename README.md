@@ -91,3 +91,8 @@ Project proposals are due 2018-04-18 29:59 EDT - submit them via github repo.  (
 2.  Add a new feature to an existing system like Bitcoin, Ethereum, or another cryptocurrency or shared ledger implementation
 3.  Propose a formalization in this space for a topic that has not been formalized yet  
 4.  Pose and solve an interesting problem
+
+## Final Project Submission
+
+Fork this repo on github and add your materials to the projects folder.  Make a subfolder with the name of your project so that it's organized.  Also, please include a LISCENSE file describing the license for the source code of the project material, as people out there on the internet may be insterested in using this code and / or collaborating.
+Please submit PRs but Wednesday night, and I'll merge them.
