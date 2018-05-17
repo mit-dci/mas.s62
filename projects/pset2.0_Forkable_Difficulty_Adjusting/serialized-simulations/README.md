@@ -9,4 +9,4 @@ while the leftover 5 or 4 cores were instructed to mine a number of blocks behin
 
 ##### To use the serialized data in the visualizer, change the path of the pickle files to match.  
 
-##### The created graphs for these simulations [can be found here](../simulated-attack-graphs)
+##### The created graphs for these simulations [can be found here](../simulated-attacks-graphs)
