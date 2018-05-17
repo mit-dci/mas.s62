@@ -2,7 +2,17 @@
 
 Built with python, this flask server supports a centralized blockchain with a couple of basic features.
 
-A full readme for the server [can be found here](../server-python/README.md)
+### Usage
+
+To start the server, simply run
+
+`python3 server.py`
+
+### Serialization notes
+
+The server implements simple serialization of the blockchain to disk in order to allow it to continue on a blockchain where it left off.  The two files created with server searlization are `block_information.pickle` and `highest_block.pickle`.  These file can be deserialized and used in the visualizer as well as kept around for analysis.  The server currently is scheduled to write to disk every minute.  
+
+*To restart the server with just the genesis block* - simply delete the `block_information.pickle` and `highest_block.pickle` files that are created
 
 ### Server Endpoints
 
