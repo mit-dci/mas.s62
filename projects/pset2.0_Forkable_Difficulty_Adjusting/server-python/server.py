@@ -97,8 +97,8 @@ def add_checked_block(block):
 
 def monero_difficulty(block):
     global block_information
-    target = 19.0
-    targetInterval = 1.0 #interval in seconds
+    target = 25.0
+    targetInterval = 60.0 #interval in seconds
     number_of_previous_block_to_look_at = 20
     extremes_to_strip = 3
     previousBlockTimes = []
@@ -132,8 +132,8 @@ def monero_difficulty(block):
 
 def bitcoin_difficulty(block):
     global block_information
-    target = 19.0
-    targetInterval = 1.0 #interval in seconds
+    target = 25.0
+    targetInterval = 60.0 #interval in seconds
     number_of_previous_block_to_look_at = 10
     number_of_blocks_to_recalculate_on = 10
     previousBlockTimes = []
@@ -163,43 +163,27 @@ def bitcoin_difficulty(block):
     return target
 
 def calculate_target_work_for_block(block):
+	"""
+	To change how difficulty changes on a block by block basis implement this method
+
+	Sample implementations with added parameters include 
+	 - bitcoin_difficulty
+	 - monero_difficulty
+
+	The returned target is the number of zero bits needed.
+	If the returned target is a decimal, 
+	every bit after the first number adds a float of
+	1 / 2^(number of bits after first one) if the bit is a zero
+	This allows for a simple implementation of difficulties that are not limited by
+	the number of zeros needed, as a decimal makes the expected
+	number of hashes to be exactly 2^difficulty
+
+	In order to speed up mining, the first 10 bits after the first 1 bit is accounted for.  
+	(no need to check every bit)
+	"""
     # return monero_difficulty(block)
-    return bitcoin_difficulty(block)
-    global block_information
-    target = 20
-    targetInterval = 2 #interval in seconds
-    threshold = 1.5
-    number_of_previous_block_to_look_at = 15
-    number_of_blocks_to_recalculate_on = 10
-    previousBlockTimes = []
-    previousBlockHash = block["blockInformation"]["previousHash"]
-    if previousBlockHash in block_information:
-        previousBlock = block_information[previousBlockHash]
-        target = previousBlock["targetWork"]
-    if block["height"] % number_of_blocks_to_recalculate_on == 0:
-        while len(previousBlockTimes) < number_of_previous_block_to_look_at:
-            if previousBlockHash in block_information:
-                previousBlock = block_information[previousBlockHash]
-                previousBlockTimes.append((previousBlock["timestamp"], previousBlock["targetWork"]))
-                previousBlockHash = previousBlock["blockInformation"]["previousHash"]
-            else:
-                break
-
-        if len(previousBlockTimes) > 0:
-            previousTarget = previousBlockTimes[0][1]
-            
-            time_difference = block["timestamp"] - previousBlockTimes[-1][0] #difference in seconds
-            # print("Time difference between last {} is {}".format(len(previousBlockTimes), time_difference))
-            expected_difference = targetInterval * len(previousBlockTimes)
-            if time_difference / expected_difference < 1 / threshold:
-                target = previousTarget + 1
-                # print("Raising difficulty to : {}".format(target))
-            elif time_difference / expected_difference > threshold and previousTarget > 0:
-                target = previousTarget - 1
-                # print("Lowering difficulty to : {}".format(target))
-            else:
-                target = previousTarget
-
+    # return bitcoin_difficulty(block)
+    target = 32
     return target
 
 

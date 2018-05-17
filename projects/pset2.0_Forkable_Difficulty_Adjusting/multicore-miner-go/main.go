@@ -77,7 +77,7 @@ func BlockFromString(s string) (Block, error) {
 }
 
 func main() {
-	cpus := runtime.NumCPU() - 7
+	cpus := 1
 	fmt.Printf("Avery's Miner v1.0\n")
 	argsWithoutProg := os.Args[1:]
 	fmt.Println(argsWithoutProg)
@@ -95,6 +95,10 @@ func main() {
 	} else if len(argsWithoutProg) == 1 {
 		cachingEnable = false
 		cpus, _ = strconv.Atoi(argsWithoutProg[0])
+	}
+
+	if cpus > runtime.NumCPU() {
+		panic(fmt.Sprint("Invalid number of cpus.  Maximum:", runtime.NumCPU()))
 	}
 	// Your code here!
 
