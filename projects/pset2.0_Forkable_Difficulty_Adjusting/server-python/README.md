@@ -14,6 +14,20 @@ The server implements simple serialization of the blockchain to disk in order to
 
 *To restart the server with just the genesis block* - simply delete the `block_information.pickle` and `highest_block.pickle` files that are created
 
+### Block Difficulty
+
+To modify how the server adjust block difficulty, modify the function `calculate_target_work_for_block` (line 165) 
+that gets called after every new block.  There are two sample implementations `monero_difficulty` and `bitcoin_difficulty` that can be used to test out monero-like and bitcoin-like difficulty adjustments with different parameters.  
+
+(note) - difficulty is in number of leading zeros plus the geometric sum of the next 10 inverted bits multiplied by their term in the geometric series `1 / 2^n`.  
+
+The complete implementation of difficulty checking can be found in the `hash_block_information` function (line 286).
+
+#### Forkable
+
+To fork a chain, simply add blocks pointing to any hash that already exists in the chain.
+
+
 ### Server Endpoints
 
 **Add Block -** `/addblock/<Previous Hash>/<name>/<nonce>`
