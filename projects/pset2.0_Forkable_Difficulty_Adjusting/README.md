@@ -11,24 +11,24 @@ or explore.
 
 ### Quick Redirects
 
-[Python Server]()
+[Python Server](server-python/)
 
-[Visualization Code (Python)]()
+[Visualization Code (Python)](blockchain-visualizer/)
 
-[Multicore Miner (Golang)]()
+[Multicore Miner (Golang)](multicore-miner-go/)
 
-[Singlecore Miner (Python)]()
+[Singlecore Miner (Python)](singlecore-miner-python/)
 
-[Multicore Miner (Python)]()
+[Multicore Miner (Python)](multicore-miner-python/)
 
-[Cuda Miner (c, cu)]()
+[Cuda Miner (c, cu)](gpu-cuda-miner-cu/)
 
 
 ## Server
 
 Built with python, this flask server supports a centralized blockchain with a couple of basic features.
 
-A full readme for the server [can be found here](../server-python/README.md)
+A full readme for the server [can be found here](server-python/)
 
 ### Server Endpoints
 
@@ -60,5 +60,47 @@ A full readme for the server [can be found here](../server-python/README.md)
 **Get Specific Chain -** `/getchain/<Block Hash>`
 >  @param `Block Hash` - The string hash of the chain to return
 >  - Returns the chain from the orign to the specified block with `Block Hash`
+
+#### Block Difficulty
+
+To modify how the server adjust block difficulty, modify the function `calculate_target_work_for_block` (line 165) 
+that gets called after every new block.  There are two sample implementations `monero_difficulty` and `bitcoin_difficulty` that can be used to test out monero-like and bitcoin-like difficulty adjustments with different parameters.  
+
+(note) - difficulty is in number of leading zeros plus the geometric sum of the next 10 inverted bits multiplied by their term in the geometric series `1 / 2^n`.  
+
+The complete implementation of difficulty checking can be found in the `hash_block_information` function (line 286).
+
+#### Forkable
+
+To fork a chain, simply add blocks pointing to any hash that already exists in the chain.
+
+## Multicore Golang Miner
+
+The full readme for the miner [can be found here](multicore-miner-go/)
+
+The multi-core Golang miner that we made to test out the server utilizes many different configurations with command-line arguments to run.  
+
+#### Installation
+
+`go build main.go miner.go client.go`
+
+The buildscript will create an executable file `main`, that can be run with the command line arguments
+
+#### Usage 
+
+(note) - default miner name is specified in code and needs to be updated
+
+Mine from the main tip single core (query for new tips continuously) 
+`./main`
+
+Mine from the main tip multi-core (<num of cores>)
+`./main <num of cores>`
+ 
+Mine from specified block
+`./main <Block Hash> <Target Difficulty> <Miner Name> <num of cores>
+> @params `Block Hash` - The hash of the block to start mining from
+> @params `Target Difficulty` - The target difficulty of the block (must match with the server's target difficulty)
+> @params `Miner Name` - Specify a different miner name
+> @params `num of cores` - The number of cores to mine with
 
 
