@@ -47,8 +47,8 @@ def generate_graphviz(block_information):
 		g.edge(prev_hash, block_hash)
 	g.view()
 
-block_information = pickle.load(open("block_information.pickle", 'rb'))
-highest_block = pickle.load(open("highest_block.pickle", 'rb'))
+block_information = pickle.load(open("../server-python/block_information.pickle", 'rb'))
+highest_block = pickle.load(open("../server-python/highest_block.pickle", 'rb'))
 
 print("Creating graphviz...")
 # generate_graphviz(block_information)
@@ -57,9 +57,9 @@ print("Done.")
 
 # block height 0: 6c179f21e6f62b629055d8ab40f454ed02e48b68563913473b857d3638e23b28
 origin_block = "6c179f21e6f62b629055d8ab40f454ed02e48b68563913473b857d3638e23b28"
-forked_block = "00001d87846888b85e4b9b757b59a936b0ff33d8128518c78efaa092572efbfd"
-# endpoint_block = highest_block[0]['blockHash']
-endpoint_block = "000020740eaeb10491a470b5ab05c16a48abda7792d4378a0b3d0651c6f71bf9"
+forked_block = "00001d87846888b85e4b9b757b59a936b0ff33d8128518c78efaa092572efbfd" # Put the hash of another tip here to graph it as well
+endpoint_block = highest_block[0]['blockHash']
+
 print(endpoint_block)
 
 time_interval = 0.5 # seconds
