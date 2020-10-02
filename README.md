@@ -14,7 +14,7 @@ Place:  E14-341
 Contact: [cryptocurrency-sp18-staff@mit.edu](cryptocurrency-sp18-staff@mit.edu)
 
 You are welcome to contact us via email.  However, if you think your
-question would be useful for others to see, please file it as [an issue](https://github.com/mit-dci/mas.s62/issues)
+question would be useful for other users also, please file it as [an issue](https://github.com/mit-dci/mas.s62/issues)
 in this repository!
 
 Description:
@@ -38,7 +38,7 @@ TA: James Lovejoy [jlovejoy@mit.edu](jlovejoy@mit.edu)
 
 ## Schedule
 
-NOTE:  The schedule is in flux and subject to change.
+NOTE:  The schedule is in flexible and is subject to change.
 
 
 | # | Date | Lecturer | Topic | Readings | Lecture Notes | Labs |
@@ -87,12 +87,12 @@ presentation and a ~4 page paper on one of the following:
 
 Project proposals are due 2018-04-18 29:59 EDT - submit them via github repo.  (e-mail is also OK if you can get git to work)
 
-1.  Design and implement an application or system
-2.  Add a new feature to an existing system like Bitcoin, Ethereum, or another cryptocurrency or shared ledger implementation
-3.  Propose a formalization in this space for a topic that has not been formalized yet  
-4.  Pose and solve an interesting problem
+1.  Design and implement an application or system.
+2.  Add a new feature to an existing system like Bitcoin, Ethereum, or another cryptocurrency or shared ledger implementation.
+3.  Propose a formalization in this space for a topic that has not been formalized yet. 
+4.  Pose and solve an interesting problem.
 
 ## Final Project Submission
 
-Fork this repo on github and add your materials to the projects folder.  Make a subfolder with the name of your project so that it's organized.  Also, please include a LISCENSE file describing the license for the source code of the project material, as people out there on the internet may be insterested in using this code and / or collaborating.
+Fork this repository on github and add your materials to the projects folder.  Make a subfolder with the name of your project so that it's organized.  Also, please include a LISCENSE file describing the license for the source code of the project material, as people out there on the internet may be insterested in using this code and / or collaborating.
 Please submit PRs but Wednesday night, and I'll merge them.
