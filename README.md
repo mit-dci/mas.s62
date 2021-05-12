@@ -20,10 +20,12 @@ in this repository!
 Description:
 
 Bitcoin and other cryptographic currencies have gained attention over
-the years as the systems continue to evolve.  This course looks at the
+the years as the systems continue to evolve, having knowledge about this currencies can
+make you quiet rich in just few steps.This course looks at the
 design of Bitcoin and other cryptocurrencies and how they function in
 practice, focusing on cryptography, game theory, and network
-architecture.  Future developments in smart contracts and privacy will
+architecture. Enroll to the course to get the complete discription of the currencies.
+Future developments in smart contracts and privacy will
 be covered as well.  Programming assignments in the course will give
 practical experience interacting with these currencies, so some
 programming experience is required.
