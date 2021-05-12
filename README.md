@@ -3,7 +3,7 @@
 
 ### NOTE:  This document is a draft and is subject to change.
 
-## Information
+## Information regarding websites
 
 Instructors:  Tadge Dryja ([tdryja@media.mit.edu](tdryja@media.mit.edu)) and Neha Narula ([narula@media.mit.edu](narula@media.mit.edu))
 
