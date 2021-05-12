@@ -1,7 +1,7 @@
 # MAS.S62 Spring 2018
 # Cryptocurrency Engineering and Design
 
-### NOTE:  This document is a draft and is subject to change.
+### IMPORTANT_NOTE:  This document is a draft and is subject to change.
 
 ## Information
 
