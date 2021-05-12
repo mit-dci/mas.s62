@@ -1,3 +1,4 @@
+Nice project improve docs for get better results
 # MAS.S62 Spring 2018
 # Cryptocurrency Engineering and Design
 
