@@ -1,0 +1,668 @@
+diff --git a/Dockerfile b/Dockerfile
+new file mode 100644
+index 0000000..ebb96ea
+--- /dev/null
++++ b/Dockerfile
+@@ -0,0 +1,12 @@
++FROM ubuntu:18.04
++
++RUN apt-get update && apt-get install -y \
++    make \
++    sudo \
++    wget
++
++ADD . /srv/CryptoKernel
++WORKDIR /srv/CryptoKernel
++RUN ./installdeps.sh
++
++ENTRYPOINT ["bash"]
+diff --git a/Makefile b/Makefile
+index dc32d91..2c2a404 100644
+--- a/Makefile
++++ b/Makefile
+@@ -4,7 +4,7 @@ ifeq ($(UNAME), Linux)
+ LUA_INCDIR ?= /usr/include/lua5.3
+ LUA_LIBDIR ?= /usr/lib
+ LIBFLAGS   ?= -shared
+-BINFLAGS   ?= -I. -L. -L/usr/local/lib -Wl,-rpath -Wl,./ -lck -llua5.3 -lcrypto -ldl -pthread -lleveldb -lmicrohttpd -ljsonrpccpp-common -ljsonrpccpp-server -ljsonrpccpp-client -lcurl -lgcov -ljsoncpp -lsfml-system -lsfml-network
++BINFLAGS   ?= -I. -L. -L/usr/local/lib -Wl,-rpath -Wl,./ -lck -llua5.3 -lcrypto -ldl -pthread -lleveldb -lmicrohttpd -ljsonrpccpp-common -ljsonrpccpp-server -ljsonrpccpp-client -lcurl -lgcov -ljsoncpp -lsfml-system -lsfml-network -lcschnorr
+ PLATFORMCXXFLAGS ?= -fPIC
+ CKLIB ?= libck.so
+ CKBIN ?= ckd
+@@ -53,7 +53,7 @@ endif
+ 
+ KERNELCXXFLAGS += -g -Wall -std=c++14 -Og -Wl,-E -Isrc/kernel
+ 
+-KERNELSRC = src/kernel/blockchain.cpp src/kernel/blockchaintypes.cpp src/kernel/math.cpp src/kernel/storage.cpp src/kernel/network.cpp src/kernel/networkpeer.cpp src/kernel/base64.cpp src/kernel/crypto.cpp src/kernel/log.cpp src/kernel/contract.cpp src/kernel/consensus/AVRR.cpp src/kernel/consensus/PoW.cpp src/kernel/merkletree.cpp
++KERNELSRC = src/kernel/blockchain.cpp src/kernel/blockchaintypes.cpp src/kernel/math.cpp src/kernel/storage.cpp src/kernel/network.cpp src/kernel/networkpeer.cpp src/kernel/base64.cpp src/kernel/crypto.cpp src/kernel/schnorr.cpp src/kernel/log.cpp src/kernel/contract.cpp src/kernel/consensus/AVRR.cpp src/kernel/consensus/PoW.cpp src/kernel/merkletree.cpp
+ KERNELOBJS = $(KERNELSRC:.cpp=.cpp.o)
+ 
+ LYRASRC = src/kernel/consensus/Lyra2REv2/Lyra2RE.c src/kernel/consensus/Lyra2REv2/Lyra2.c src/kernel/consensus/Lyra2REv2/Sponge.c src/kernel/consensus/Lyra2REv2/sha3/blake.c src/kernel/consensus/Lyra2REv2/sha3/cubehash.c src/kernel/consensus/Lyra2REv2/sha3/keccak.c src/kernel/consensus/Lyra2REv2/sha3/skein.c src/kernel/consensus/Lyra2REv2/sha3/bmw.c
+@@ -62,7 +62,7 @@ LYRAOBJS = $(LYRASRC:.c=.c.o)
+ CLIENTSRC = src/client/main.cpp src/client/rpcserver.cpp src/client/wallet.cpp src/client/httpserver.cpp src/client/multicoin.cpp
+ CLIENTOBJS = $(CLIENTSRC:.cpp=.cpp.o)
+ 
+-TESTSRC = tests/CryptoKernelTestRunner.cpp tests/CryptoTests.cpp tests/MathTests.cpp tests/MerkletreeTests.cpp tests/StorageTests.cpp tests/LogTests.cpp
++TESTSRC = tests/CryptoKernelTestRunner.cpp tests/CryptoTests.cpp tests/SchnorrTests.cpp tests/MathTests.cpp tests/MerkletreeTests.cpp tests/LogTests.cpp
+ TESTOBJS = $(TESTSRC:.cpp=.cpp.o)
+ 
+ CXXFLAGS = $(KERNELCXXFLAGS) $(PLATFORMCXXFLAGS) -I$(LUA_INCDIR)
+diff --git a/installdeps.sh b/installdeps.sh
+index 110acbd..2b959c8 100755
+--- a/installdeps.sh
++++ b/installdeps.sh
+@@ -1,8 +1,18 @@
+-sudo apt-get update
+-sudo apt-get install -y git build-essential libsfml-dev libleveldb-dev libargtable2-dev libreadline-dev libcurl4-gnutls-dev liblua5.3-dev cmake libhiredis-dev doxygen libcppunit-dev
++sudo apt-get update && apt-get install -y \
++    git \
++    build-essential \
++    libsfml-dev \
++    libleveldb-dev \
++    libargtable2-dev \
++    libreadline-dev \
++    libcurl4-gnutls-dev \
++    liblua5.3-dev \
++    cmake \
++    libhiredis-dev \
++    doxygen \
++    libcppunit-dev
+ 
+ cd /tmp
+-
+ wget https://www.openssl.org/source/openssl-1.1.0f.tar.gz
+ tar -xvzf openssl-1.1.0f.tar.gz
+ cd openssl-1.1.0f
+@@ -10,17 +20,17 @@ cd openssl-1.1.0f
+ make
+ sudo make install
+ sudo ldconfig
+-cd ../
+ 
++cd ../
+ wget http://ftp.gnu.org/gnu/libmicrohttpd/libmicrohttpd-latest.tar.gz
+ tar -xvzf libmicrohttpd-latest.tar.gz
+ cd libmicrohttpd*
+ ./configure
+ make
+ sudo make install
+-cd ../
+ 
+-wget https://github.com/open-source-parsers/jsoncpp/archive/1.8.4.tar.gz
++cd ../
++wget --no-check-certificate https://github.com/open-source-parsers/jsoncpp/archive/1.8.4.tar.gz
+ tar -xzvf 1.8.4.tar.gz
+ cd jsoncpp*
+ cmake .
+@@ -28,7 +38,7 @@ make
+ sudo make install
+ 
+ cd ../
+-wget https://github.com/cinemast/libjson-rpc-cpp/archive/v1.1.0.tar.gz
++wget --no-check-certificate https://github.com/cinemast/libjson-rpc-cpp/archive/v1.1.0.tar.gz
+ tar -xvzf v1.1.0.tar.gz
+ cd libjson-rpc-cpp*
+ cmake . -DBUILD_SHARED_LIBS=NO -DBUILD_STATIC_LIBS=YES -DCOMPILE_TESTS=NO -DCOMPILE_STUBGEN=NO -DCOMPILE_EXAMPLES=NO
+@@ -43,5 +53,13 @@ git clone https://github.com/metalicjames/lua-lz4.git
+ cd lua-lz4
+ make
+ sudo cp lz4.so /usr/lib
++sudo ldconfig
+ 
++cd ../
++git clone https://github.com/metalicjames/cschnorr.git
++cd cschnorr
++./build.sh
++sudo mkdir /usr/local/include/cschnorr/
++sudo cp src/*.h /usr/local/include/cschnorr/
++sudo cp libcschnorr.a /usr/local/lib
+ sudo ldconfig
+diff --git a/src/kernel/blockchain.cpp b/src/kernel/blockchain.cpp
+index 74bedb3..8f15538 100644
+--- a/src/kernel/blockchain.cpp
++++ b/src/kernel/blockchain.cpp
+@@ -29,6 +29,7 @@
+ #include "crypto.h"
+ #include "ckmath.h"
+ #include "contract.h"
++#include "schnorr.h"
+ 
+ CryptoKernel::Blockchain::Blockchain(CryptoKernel::Log* GlobalLog,
+                                      const std::string& dbDir) {
+@@ -274,6 +275,25 @@ std::tuple<bool, bool> CryptoKernel::Blockchain::verifyTransaction(Storage::Tran
+         inputTotal += out.getValue();
+ 
+         const Json::Value outData = out.getData();
++
++        if(!outData["schnorrKey"].empty() && outData["contract"].empty()) {
++            const Json::Value spendData = inp.getData();
++            if(spendData["signature"].empty()) {
++                log->printf(LOG_LEVEL_INFO,
++                            "blockchain::verifyTransaction(): Could not verify input signature");
++                return std::make_tuple(false, true);
++            }
++
++            CryptoKernel::Schnorr schnorr;
++            schnorr.setPublicKey(outData["schnorrKey"].asString());
++            if(!schnorr.verify(out.getId().toString() + outputHash.toString(),
++                              spendData["signature"].asString())) {
++                log->printf(LOG_LEVEL_INFO,
++                            "blockchain::verifyTransaction(): Could not verify input signature");
++                return std::make_tuple(false, true);
++            }
++        }
++
+         if(!outData["publicKey"].empty() && outData["contract"].empty()) {
+             const Json::Value spendData = inp.getData();
+             if(spendData["signature"].empty()) {
+diff --git a/src/kernel/consensus/PoW.cpp b/src/kernel/consensus/PoW.cpp
+index f223de8..482fd86 100644
+--- a/src/kernel/consensus/PoW.cpp
++++ b/src/kernel/consensus/PoW.cpp
+@@ -1,5 +1,6 @@
+ #include <sstream>
+ #include <math.h>
++#include <iostream>
+ 
+ #include "PoW.h"
+ #include "Lyra2REv2/Lyra2RE.h"
+@@ -140,6 +141,8 @@ bool CryptoKernel::Consensus::PoW::checkConsensusRules(Storage::Transaction* tra
+ 
+         //Check proof of work
+         if(blockData.target <= calculatePoW(block, blockData.nonce)) {
++            std::cout << blockData.target.toString() << ", " << calculatePoW(block, blockData.nonce).toString() << std::endl;
++
+             return false;
+         }
+ 
+diff --git a/src/kernel/crypto.cpp b/src/kernel/crypto.cpp
+index 5523f65..5e2dcc9 100644
+--- a/src/kernel/crypto.cpp
++++ b/src/kernel/crypto.cpp
+@@ -314,4 +314,4 @@ std::shared_ptr<unsigned char> CryptoKernel::AES256::genKey(const std::string& p
+     }
+     
+     return key;
+-}
+\ No newline at end of file
++}
+diff --git a/src/kernel/crypto.h b/src/kernel/crypto.h
+index 402f772..a3c0060 100644
+--- a/src/kernel/crypto.h
++++ b/src/kernel/crypto.h
+@@ -114,7 +114,6 @@ private:
+     EC_GROUP *ecgroup;
+ };
+ 
+-
+ class AES256 {
+     public:
+         AES256(const Json::Value& objJson);
+diff --git a/src/kernel/merkletree.cpp b/src/kernel/merkletree.cpp
+index 31ae743..380f4b4 100644
+--- a/src/kernel/merkletree.cpp
++++ b/src/kernel/merkletree.cpp
+@@ -101,4 +101,4 @@ std::shared_ptr<CryptoKernel::MerkleNode> CryptoKernel::MerkleNode::makeMerkleTr
+     }
+     
+     return nodes[0];
+-}
+\ No newline at end of file
++}
+diff --git a/src/kernel/schnorr.cpp b/src/kernel/schnorr.cpp
+new file mode 100644
+index 0000000..b7c4332
+--- /dev/null
++++ b/src/kernel/schnorr.cpp
+@@ -0,0 +1,231 @@
++/*  CryptoKernel - A library for creating blockchain based digital currency
++    Copyright (C) 2016  James Lovejoy
++
++    This program is free software: you can redistribute it and/or modify
++    it under the terms of the GNU General Public License as published by
++    the Free Software Foundation, either version 3 of the License, or
++    (at your option) any later version.
++
++    This program is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++    GNU General Public License for more details.
++
++    You should have received a copy of the GNU General Public License
++    along with this program.  If not, see <http://www.gnu.org/licenses/>.
++*/
++
++#include <sstream>
++#include <algorithm>
++#include <iomanip>
++#include <cstring>
++
++#include "schnorr.h"
++#include "base64.h"
++
++CryptoKernel::Schnorr::Schnorr() {
++    ctx = schnorr_context_new();
++    key = musig_key_new(ctx);
++
++    if (key == NULL) {
++        throw std::runtime_error("Could not generate key pair");
++    }
++}
++
++CryptoKernel::Schnorr::~Schnorr() {
++    schnorr_context_free(ctx);
++    // TODO(metalicjames): musig_key_free(key);
++}
++
++bool CryptoKernel::Schnorr::verify(const std::string& message,
++                                   const std::string& signature) {
++    const std::string decodedSignature = base64_decode(signature);
++
++    musig_sig* sig = NULL;
++    sig = reinterpret_cast<musig_sig*>(malloc(sizeof(musig_sig)));
++    if (sig == NULL) {
++        return false;
++    }
++    sig->s = NULL;
++    sig->R = NULL;
++
++    sig->s = BN_new();
++    if (sig->s == NULL) {
++        return false;
++    }
++
++    sig->R = EC_POINT_new(ctx->group);
++    if (sig->R == NULL) {
++        return false;
++    }
++
++    if (!BN_bin2bn((unsigned char*)decodedSignature.c_str(), 32, sig->s)) {
++        return false;
++    }
++
++    if (!EC_POINT_oct2point(
++        ctx->group,
++        sig->R,
++        (unsigned char*)decodedSignature.c_str() + 32,
++        33,
++        ctx->bn_ctx)) {
++        return false;
++    }
++
++    if (!EC_POINT_oct2point(
++        ctx->group,
++        key->pub->A,
++        (unsigned char*)decodedSignature.c_str() + 65,
++        33,
++        ctx->bn_ctx)) {
++        return false;
++    }
++
++    if (musig_verify(
++        ctx,
++        sig,
++        key->pub,
++        (unsigned char*)message.c_str(),
++        message.size()) != 1) {
++        return false;
++    }
++
++    return true;
++}
++
++std::string CryptoKernel::Schnorr::sign(const std::string& message) {
++    if (key != NULL) {
++        musig_sig* sig;
++        musig_pubkey* pub;
++        musig_pubkey* pubkeys[1];
++        pubkeys[0] = key->pub;
++
++        if (musig_sign(
++            ctx,
++            &sig,
++            &pub,
++            key,
++            pubkeys,
++            1,
++            (unsigned char*)message.c_str(),
++            message.size()) == 0) {
++            delete[] sig;
++
++            throw std::runtime_error("Could not sign message");
++        } else {
++            unsigned int buf_len = 98;
++            unsigned char *buf;
++            buf = new unsigned char[buf_len];
++
++            if (BN_bn2binpad(sig->s, buf, 32) != 32) {
++                throw std::runtime_error("Failed to encode s");
++            }
++
++            if (EC_POINT_point2oct(
++                    ctx->group,
++                    sig->R,
++                    POINT_CONVERSION_COMPRESSED,
++                    buf + 32,
++                    33,
++                    ctx->bn_ctx) != 33) {
++                throw std::runtime_error("Failed to encode R");
++            }
++
++            if (EC_POINT_point2oct(
++                    ctx->group,
++                    pub->A,
++                    POINT_CONVERSION_COMPRESSED,
++                    buf + 65,
++                    33,
++                    ctx->bn_ctx) != 33) {
++                throw std::runtime_error("Failed to encode A");
++            }
++
++            const std::string returning = base64_encode(buf, buf_len);
++
++            delete[] sig;
++            delete[] buf;
++
++            return returning;
++        }
++    } else {
++        return "";
++    }
++}
++
++std::string CryptoKernel::Schnorr::getPublicKey() {
++    if (key != NULL) {
++        unsigned int buf_len = 33;
++        unsigned char *buf;
++        buf = new unsigned char[buf_len];
++
++        if (EC_POINT_point2oct(
++                ctx->group,
++                key->pub->A,
++                POINT_CONVERSION_COMPRESSED,
++                buf,
++                buf_len,
++                ctx->bn_ctx) != buf_len) {
++            return "";
++        }
++
++        const std::string returning = base64_encode(buf, buf_len);
++
++        delete[] buf;
++
++        return returning;
++    } else {
++        return "";
++    }
++}
++
++std::string CryptoKernel::Schnorr::getPrivateKey() {
++    if (key != NULL) {
++        int buf_len = 32;
++        unsigned char *buf;
++        buf = new unsigned char[buf_len];
++
++        if (BN_bn2binpad(key->a, buf, buf_len) != buf_len) {
++            return "";
++        }
++
++        const std::string returning = base64_encode(buf, buf_len);
++
++        delete[] buf;
++
++        return returning;
++    } else {
++        return "";
++    }
++}
++
++bool CryptoKernel::Schnorr::setPublicKey(const std::string& publicKey) {
++    const std::string decodedKey = base64_decode(publicKey);
++
++    if (!EC_POINT_oct2point(
++            ctx->group,
++            key->pub->A,
++            (unsigned char*)decodedKey.c_str(),
++            decodedKey.size(),
++            ctx->bn_ctx)) {
++        return false;
++    }
++    return true;
++}
++
++bool CryptoKernel::Schnorr::setPrivateKey(const std::string& privateKey) {
++    const std::string decodedKey = base64_decode(privateKey);
++
++    if (!BN_bin2bn(
++            (unsigned char*)decodedKey.c_str(),
++            (unsigned int)decodedKey.size(),
++            key->a)) {
++        return false;
++    }
++    return true;
++}
++
++
++bool CryptoKernel::Schnorr::getStatus() {
++    return true;
++}
+diff --git a/src/kernel/schnorr.h b/src/kernel/schnorr.h
+new file mode 100644
+index 0000000..de1459e
+--- /dev/null
++++ b/src/kernel/schnorr.h
+@@ -0,0 +1,104 @@
++/*
++Copyright (C) 2016  James Lovejoy
++    This program is free software: you can redistribute it and/or modify
++    it under the terms of the GNU General Public License as published by
++    the Free Software Foundation, either version 3 of the License, or
++    (at your option) any later version.
++    This program is distributed in the hope that it will be useful,
++    but WITHOUT ANY WARRANTY; without even the implied warranty of
++    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++    GNU General Public License for more details.
++    You should have received a copy of the GNU General Public License
++    along with this program.  If not, see <http://www.gnu.org/licenses/>.
++*/
++
++#ifndef SCHNORR_H_INCLUDED
++#define SCHNORR_H_INCLUDED
++
++#include <string>
++#include <memory>
++
++#include <cschnorr/multisig.h>
++#include <json/value.h>
++
++
++namespace CryptoKernel {
++
++/**
++* A mutable class which performs cryptography operations on Schnorr keypairs. It provides funtions to
++* generate keys, signing and verifying.
++*/
++class Schnorr {
++public:
++    /**
++    * Constructs a Schnorr object. Optionally generates a Schnorr keypair.
++    */
++    Schnorr();
++
++    /**
++    * Schnorr class deconstructor
++    */
++    ~Schnorr();
++
++    /**
++    * DEPRECATED: Returns the status of the Schnorr module
++    *
++    * @return the status of the Schnorr module. Always true.
++    */
++    bool getStatus();
++
++    /**
++    * Generates an Schnorr signature from the given message.
++    *
++    * @param message the message to sign, must be non-empty
++    * @return the Schnorr signature of the message and public key as base64_encode(s + R + A)
++    */
++    std::string sign(const std::string& message);
++
++    /**
++    * Verifies a that a given signature verifies the given message with the public key of this class
++    *
++    * @param message the message to verify, must be non-empty
++    * @param signature the signature to check against, must be non-empty
++    * @return true if the signature is correctly verified against the message and public key, false otherwise
++    */
++    bool verify(const std::string& message, const std::string& signature);
++
++    /**
++    * Returns the public key of the instance
++    *
++    * @return the public key of the class encoded base64
++    */
++    std::string getPublicKey();
++
++    /**
++    * Returns the private key of the instance
++    *
++    * @return the private key of the class encoded base64
++    */
++    std::string getPrivateKey();
++
++    /**
++    * Sets the public key of the instance
++    *
++    * @param publicKey valid public key from another instance of Schnorr
++    * @return true if setting the key was successful, false otherwise
++    */
++    bool setPublicKey(const std::string& publicKey);
++
++    /**
++    * Sets the private key of the instance
++    *
++    * @param privateKey valid private key from another instance of Schnorr
++    * @return true if setting the key was successful, false otherwise
++    */
++    bool setPrivateKey(const std::string& privateKey);
++
++private:
++    musig_key *key;
++    schnorr_context *ctx;
++};
++
++}
++
++#endif  // SCHNORR_H_INCLUDED
+diff --git a/tests/SchnorrTests.cpp b/tests/SchnorrTests.cpp
+new file mode 100644
+index 0000000..7817e91
+--- /dev/null
++++ b/tests/SchnorrTests.cpp
+@@ -0,0 +1,63 @@
++#include "SchnorrTests.h"
++
++CPPUNIT_TEST_SUITE_REGISTRATION(SchnorrTest);
++
++SchnorrTest::SchnorrTest() {
++}
++
++SchnorrTest::~SchnorrTest() {
++}
++
++void SchnorrTest::setUp() {
++    schnorr = new CryptoKernel::Schnorr();
++}
++
++void SchnorrTest::tearDown() {
++    delete schnorr;
++}
++
++/**
++* Tests that the Crypto module initialised correctly
++*/
++void SchnorrTest::testInit() {
++    CPPUNIT_ASSERT(schnorr->getStatus());
++}
++
++/**
++* Tests that a keypair has been generated
++*/
++void SchnorrTest::testKeygen() {
++    const std::string privateKey = schnorr->getPrivateKey();
++    const std::string publicKey = schnorr->getPublicKey();
++
++    CPPUNIT_ASSERT(privateKey.size() > 0);
++    CPPUNIT_ASSERT(publicKey.size() > 0);
++}
++
++/**
++* Tests that signing and verifying works
++*/
++void SchnorrTest::testSignVerify() {
++    const std::string privateKey = schnorr->getPrivateKey();
++    const std::string publicKey = schnorr->getPublicKey();
++
++    const std::string signature = schnorr->sign(plainText);
++
++    CPPUNIT_ASSERT(signature.size() > 0);
++    CPPUNIT_ASSERT(schnorr->verify(plainText, signature));
++}
++
++/**
++* Tests passing key to class
++*/
++void SchnorrTest::testPassingKeys() {
++    CryptoKernel::Schnorr *tempSchnorr = new CryptoKernel::Schnorr();
++
++    const std::string signature = tempSchnorr->sign(plainText);
++    CPPUNIT_ASSERT(signature.size() > 0);
++
++    CPPUNIT_ASSERT(schnorr->setPublicKey(tempSchnorr->getPublicKey()));
++    CPPUNIT_ASSERT(schnorr->verify(plainText, signature));
++
++    delete tempSchnorr;
++}
+diff --git a/tests/SchnorrTests.h b/tests/SchnorrTests.h
+new file mode 100644
+index 0000000..bec124e
+--- /dev/null
++++ b/tests/SchnorrTests.h
+@@ -0,0 +1,35 @@
++#ifndef SCHNORRTEST_H
++#define SCHNORRTEST_H
++
++#include <cppunit/extensions/HelperMacros.h>
++
++#include "schnorr.h"
++
++class SchnorrTest : public CPPUNIT_NS::TestFixture {
++    CPPUNIT_TEST_SUITE(SchnorrTest);
++
++    CPPUNIT_TEST(testInit);
++    CPPUNIT_TEST(testKeygen);
++    CPPUNIT_TEST(testSignVerify);
++    CPPUNIT_TEST(testPassingKeys);
++
++    CPPUNIT_TEST_SUITE_END();
++
++public:
++    SchnorrTest();
++    virtual ~SchnorrTest();
++    void setUp();
++    void tearDown();
++
++private:
++    void testInit();
++    void testKeygen();
++    void testSignVerify();
++    void testPassingKeys();
++    CryptoKernel::Schnorr *schnorr;
++    const std::string plainText = "This is a test.";
++
++};
++
++#endif
++
