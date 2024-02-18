@@ -21,6 +21,7 @@ package main
 
 import (
 	"bytes"
+	"crypto/rand"
 	"crypto/sha256"
 	"encoding/hex"
 	"fmt"
@@ -29,7 +30,7 @@ import (
 func main() {
 
 	// Define your message
-	textString := "1"
+	textString := "HoustonJ2013 first go code"
 	fmt.Printf("%s\n", textString)
 
 	// convert message into a block
@@ -110,7 +111,7 @@ func HexToPubkey(s string) (PublicKey, error) {
 	// first, make sure hex string is of correct length
 	if len(s) != expectedLength {
 		return p, fmt.Errorf(
-			"Pubkey string %d characters, expect %d", expectedLength)
+			"Pubkey string %d characters, expect %d", len(s), expectedLength)
 	}
 
 	// decode from hex to a byte slice
@@ -162,7 +163,7 @@ func BlockFromByteSlice(by []byte) Block {
 	return bl
 }
 
-// A signature consists of 32 blocks.  It's a selective reveal of the private
+// A signature consists of 256 blocks.  It's a selective reveal of the private
 // key, according to the bits of the message.
 type Signature struct {
 	Preimage [256]Block
@@ -188,7 +189,7 @@ func HexToSignature(s string) (Signature, error) {
 	// first, make sure hex string is of correct length
 	if len(s) != expectedLength {
 		return sig, fmt.Errorf(
-			"Pubkey string %d characters, expect %d", expectedLength)
+			"Pubkey string %d characters, expect %d", len(s), expectedLength)
 	}
 
 	// decode from hex to a byte slice
@@ -223,6 +224,29 @@ func GenerateKey() (SecretKey, PublicKey, error) {
 	// Your code here
 	// ===
 
+	// generate random secretkey
+	for i, block_ := range sec.ZeroPre {
+		_, err := rand.Read(block_[:])
+		if err != nil {
+			return sec, pub, err
+		}
+		sec.ZeroPre[i] = block_
+	}
+
+	for i, block_ := range sec.OnePre {
+		_, err := rand.Read(block_[:])
+		if err != nil {
+			return sec, pub, err
+		}
+		sec.OnePre[i] = block_
+
+	}
+	// harsh secret keys and pass to public keys
+	for i, _ := range pub.ZeroHash {
+		pub.ZeroHash[i] = sec.ZeroPre[i].Hash()
+		pub.OneHash[i] = sec.OnePre[i].Hash()
+	}
+
 	// ===
 	return sec, pub, nil
 }
@@ -233,8 +257,13 @@ func Sign(msg Message, sec SecretKey) Signature {
 
 	// Your code here
 	// ===
-
-	// ===
+	for i := 0; i < 256; i++ {
+		if msg[i/8]>>(7-(i%8))&0x01 == 1 {
+			sig.Preimage[i] = sec.OnePre[i]
+		} else {
+			sig.Preimage[i] = sec.ZeroPre[i]
+		}
+	}
 	return sig
 }
 
@@ -245,7 +274,16 @@ func Verify(msg Message, pub PublicKey, sig Signature) bool {
 	// Your code here
 	// ===
 
-	// ===
-
+	for i := 0; i < 256; i++ {
+		if msg[i/8]>>(7-(i%8))&0x01 == 1 {
+			if sig.Preimage[i].Hash() != pub.OneHash[i] {
+				return false
+			}
+		} else {
+			if sig.Preimage[i].Hash() != pub.ZeroHash[i] {
+				return false
+			}
+		}
+	}
 	return true
 }

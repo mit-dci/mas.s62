@@ -1,6 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"encoding/hex"
+	"fmt"
+	"runtime"
+	"time"
+)
 
 /*
 A note about the provided keys and signatures:
@@ -119,16 +124,170 @@ func Forge() (string, Signature, error) {
 	fmt.Printf("ok 3: %v\n", Verify(msgslice[2], pub, sig3))
 	fmt.Printf("ok 4: %v\n", Verify(msgslice[3], pub, sig4))
 
-	msgString := "my forged message"
-	var sig Signature
+	msgStringPre := "forge houstonj2013 2024-02-16 "
+
+	startTime := time.Now()
+
+	var useNewMsg string
+	fmt.Printf("The current message is %s", msgStringPre)
+	fmt.Println("Do you want to use new message: (Yes/No):")
+	fmt.Scanln(&useNewMsg)
+	if useNewMsg == "Yes" || useNewMsg == "yes" {
+		fmt.Println("Please enter the new message: ")
+		fmt.Scanln(&msgStringPre)
+		fmt.Println("The new message is :" + msgStringPre)
+	} else {
+		fmt.Println("Still use current message:" + msgStringPre)
+	}
 
 	// your code here!
 	// ==
-	// Geordi La
-	// ==
+	// Get the secret keys from known signature
+	// Randomly guess the unknown secret keys and verify the message and public keys
+	// Add nounces into my message as a variance in the random guess
 
-	return msgString, sig, nil
+	// get the known screate keys and save in a map; map key from 0 - 511,
 
+	known_bits := make([][]bool, 256)
+	sig_index := make([]int, 512)
+	for i := 0; i < 512; i++ {
+		sig_index[i] = -1
+	}
+	for i := 0; i < 256; i++ {
+		known_bits[i] = make([]bool, 2)
+		known_bits[i][0] = false
+		known_bits[i][1] = false
+	}
+	for mi, Imsg := range msgslice {
+		for i := 0; i < 256; i++ {
+			if Imsg[i/8]>>(7-(i%8))&0x01 == 1 {
+				known_bits[i][1] = true
+				sig_index[i+256] = mi
+			} else {
+				known_bits[i][0] = true
+				sig_index[i] = mi
+			}
+		}
+	}
+	var zeroConstraints []int
+	var oneConstraints []int
+	for i := 0; i < 256; i++ {
+		if known_bits[i][0] == false && known_bits[i][1] == true {
+			oneConstraints = append(oneConstraints, i)
+		} else if known_bits[i][1] == false && known_bits[i][0] == true {
+			zeroConstraints = append(zeroConstraints, i)
+		}
+	}
+	fmt.Printf("zero constaints %d and one constraints %d \n", len(zeroConstraints), len(oneConstraints))
+	fmt.Println(zeroConstraints)
+	fmt.Println(oneConstraints)
+
+	// Explore the unknown secret keys and messages to forge a signature
+	foundMessageString := "forge houstonj2013 2024-02-16 w 357 + 4278692"
+	var sig Signature
+	var useSavedForge string
+	fmt.Printf("The current saved forge is %s \n", foundMessageString)
+	fmt.Println("Do you want to use the saved forge: (Yes/No):")
+	fmt.Scanln(&useSavedForge)
+	if useSavedForge == "Yes" || useSavedForge == "yes" {
+		foundmsg := GetMessageFromString(foundMessageString)
+		for i := 0; i < 256; i++ {
+			if foundmsg[i/8]>>(7-(i%8))&0x01 == 1 && sig_index[i+256] != -1 {
+				sig.Preimage[i] = sigslice[sig_index[i+256]].Preimage[i]
+			} else if foundmsg[i/8]>>(7-(i%8))&0x01 == 0 && sig_index[i] != -1 {
+				sig.Preimage[i] = sigslice[sig_index[i]].Preimage[i]
+			} else {
+				break
+			}
+		}
+		duration := time.Since(startTime)
+		fmt.Println(duration)
+		if Verify(foundmsg, pub, sig) {
+			fmt.Printf("%s is verified  %v\n", hex.EncodeToString(foundmsg[:]), true)
+			return foundMessageString, sig, nil
+		} else {
+			return "wrong forge", sig, nil
+		}
+	} else {
+		var newString string
+		const numJobs = 1000
+		sigString := make(chan string, numJobs)
+		fmt.Printf("lanching %v rountines to forge the signature \n", numJobs)
+		fmt.Println("Version", runtime.Version())
+		fmt.Println("NumCPU", runtime.NumCPU())
+		fmt.Println("GOMAXPROCS", runtime.GOMAXPROCS(0))
+		for w := 1; w <= numJobs; w++ {
+			go forgeworker(w, zeroConstraints, oneConstraints, msgStringPre, sigString)
+		}
+		// hold until the any gorountine return the channel values
+		newString = <-sigString
+		foundmsg := GetMessageFromString(newString)
+		for i := 0; i < 256; i++ {
+			if foundmsg[i/8]>>(7-(i%8))&0x01 == 1 && sig_index[i+256] != -1 {
+				sig.Preimage[i] = sigslice[sig_index[i+256]].Preimage[i]
+			} else if foundmsg[i/8]>>(7-(i%8))&0x01 == 0 && sig_index[i] != -1 {
+				sig.Preimage[i] = sigslice[sig_index[i]].Preimage[i]
+			} else {
+				break
+			}
+		}
+		duration := time.Since(startTime)
+		fmt.Println(duration)
+		if Verify(foundmsg, pub, sig) {
+			fmt.Printf("%s is verified  %v\n", newString, true)
+			return newString, sig, nil
+		} else {
+			return "wrong forge", sig, nil
+		}
+	}
+
+}
+
+func forgeworker(
+	workderId int,
+	zeroConstraints []int,
+	oneConstraints []int,
+	msgStringPre string,
+	sigString chan<- string) {
+	nounce_pre := fmt.Sprintf("w %d + ", workderId)
+	fmt.Printf("Start worker %v \n", workderId)
+	var numTries uint64 = 0
+	for {
+		numTries++
+		if numTries%5000000 == 0 {
+			fmt.Printf("Worker %v has tried %v times \n", workderId, numTries)
+		}
+
+		nouncesS := nounce_pre + fmt.Sprintf("%d", numTries)
+		msgString := msgStringPre
+		msgString = msgStringPre + nouncesS
+		// fmt.Printf("Current string %s \n", msgString)
+		mymsg := GetMessageFromString(msgString)
+
+		foundforge := true
+		for _, zeroIndex := range zeroConstraints {
+			if mymsg[zeroIndex/8]>>(7-(zeroIndex%8))&0x01 == 1 {
+				foundforge = false
+				break
+			}
+		}
+		if !foundforge {
+			continue
+		}
+		for _, oneIndex := range oneConstraints {
+			if mymsg[oneIndex/8]>>(7-(oneIndex%8))&0x01 == 0 {
+				foundforge = false
+				break
+			}
+		}
+		if foundforge {
+			// return the verified string and signature
+			fmt.Printf("Find a verified signature and message %s \n", msgString)
+			sigString <- msgString
+			break
+		}
+
+	}
 }
 
 // hint:
