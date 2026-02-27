@@ -1,7 +1,7 @@
-# MAS.S62 Spring 2018
+# MAS.S62 Spring 2018 - Hope this Project marks the lining of greater and sustainable success.
 # Cryptocurrency Engineering and Design
 
-### NOTE:  This document is a draft and is subject to change.
+### NOTE:  This document is a draft and is subjected to change under any user (prediction:most changes in Hactober Fest)
 
 ## Information
 
@@ -26,7 +26,7 @@ practice, focusing on cryptography, game theory, and network
 architecture.  Future developments in smart contracts and privacy will
 be covered as well.  Programming assignments in the course will give
 practical experience interacting with these currencies, so some
-programming experience is required.
+programming experience is essentially required.
 
 Office hours: 4-6 PM Tuesdays
 
